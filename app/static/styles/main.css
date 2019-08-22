@@ -1,0 +1,70 @@
+/*label[for="regionpercent-0"]*/
+/*{*/
+/*    display: none;*/
+/*}*/
+
+body {
+  margin: 25px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.navbar.navbar-default {
+  background-color: #FEA642;
+  border-color: #FE9E31;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 19px;
+  font-style: normal;
+  font-variant: all-petite-caps;
+}
+.navbar.navbar-default .navbar-brand {
+  color: #292929;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 26px;
+}
+.navbar.navbar-default .navbar-brand:hover,
+.navbar.navbar-default .navbar-brand:focus {
+  color: #173D76;
+}
+.navbar.navbar-default .navbar-text {
+  color: #292929;
+
+}
+.navbar.navbar-default .navbar-nav > li > a {
+  color: #292929;
+}
+.navbar.navbar-default .navbar-nav > li > a:hover,
+.navbar.navbar-default .navbar-nav > li > a:focus {
+  color: #173D76;
+}
+
+.navbar.navbar-default .navbar-collapse,
+.navbar.navbar-default .navbar-form {
+  border:none;
+}
+.navbar.navbar-default .navbar-link {
+  color: #292929;
+}
+.navbar.navbar-default .navbar-link:hover {
+  color: #173D76;
+}
+
+.navbar-brand {
+  padding: 10pt;
+}
+
+.btn-lg {
+  background-color: #FEA642;
+  border-color: #FE9E31;
+  color: #292929;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 19px;
+  font-style: normal;
+  font-variant: all-petite-caps;
+}
+
+ul {
+  list-style: none;
+}

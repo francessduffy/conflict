@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Page 2</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <h3>Actor Attributes</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.regions.label }}<br>
+            {{ form.regions(size=32) }}
+        </p>
+         <p>
+            {{ form.communities.label }}<br>
+            {{ form.communities(size=32) }}
+        </p>
+        <p>
+            {{ form.militants.label }}<br>
+            {{ form.militants(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+<script>
+        var label = document.querySelector('label[for="regions-0"]') !==null;
+        if (label) {
+            var label = document.querySelector('label[for="regions-0"]');
+            label.textContent = 'First Region:';
+        }
+        var label = document.querySelector('label[for="regions-1"]') !==null;
+        if (label) {
+            var label1 = document.querySelector('label[for="regions-1"]');
+            label1.textContent = 'Second Region:';
+        }
+        var label = document.querySelector('label[for="regions-2"]') !==null;
+        if (label) {
+            var label2 = document.querySelector('label[for="regions-2"]');
+            label2.textContent = 'Third Region:';
+        }
+        var label = document.querySelector('label[for="regions-3"]') !==null;
+        if (label) {
+            var label3 = document.querySelector('label[for="regions-3"]');
+            label3.textContent = 'Fourth Region:';
+        }
+        var label = document.querySelector('label[for="regions-4"]') !==null;
+        if (label) {
+            var label4 = document.querySelector('label[for="regions-4"]');
+            label4.textContent = 'Fifth Region:';
+        }
+        var label = document.querySelector('label[for="regions-5"]') !==null;
+        if (label) {
+            var label5 = document.querySelector('label[for="regions-5"]');
+            label5.textContent = 'Sixth Region:';
+        }
+        var label = document.querySelector('label[for="regions-6"]') !==null;
+        if (label) {
+            var label6 = document.querySelector('label[for="regions-6"]');
+            label6.textContent = 'Seventh Region:';
+        }
+        var label = document.querySelector('label[for="regions-7"]') !==null;
+        if (label) {
+            var label7 = document.querySelector('label[for="regions-7"]');
+            label7.textContent = 'Eighth Region:';
+        }
+        var label = document.querySelector('label[for="regions-8"]') !==null;
+        if (label) {
+            var label8 = document.querySelector('label[for="regions-8"]');
+            label8.textContent = 'Ninth Region:';
+        }
+        var label = document.querySelector('label[for="regions-9"]') !==null;
+        if (label) {
+            var label9 = document.querySelector('label[for="regions-9"]');
+            label9.textContent = 'Tenth Region:';
+        }
+        var label = document.querySelector('label[for="regions-10"]') !==null;
+        if (label) {
+            var label10 = document.querySelector('label[for="regions-10"]');
+            label10.textContent = 'Eleventh Region:';
+        }
+        var label = document.querySelector('label[for="regions-11"]') !==null;
+        if (label) {
+            var label11 = document.querySelector('label[for="regions-11"]');
+            label11.textContent = 'Twelfth Region:';
+        }
+        var label = document.querySelector('label[for="regions-12"]') !==null;
+        if (label) {
+            var label12 = document.querySelector('label[for="regions-12"]');
+            label12.textContent = 'Thirteenth Region:';
+        }
+        var label = document.querySelector('label[for="regions-13"]') !==null;
+        if (label) {
+            var label13 = document.querySelector('label[for="regions-13"]');
+            label13.textContent = 'Fourteenth Region:';
+        }
+        var label = document.querySelector('label[for="regions-14"]') !==null;
+        if (label) {
+            var label14 = document.querySelector('label[for="regions-14"]');
+            label14.textContent = 'Fifteenth Region:';
+        }
+        var label = document.querySelector('label[for="communities-0"]') !==null;
+        if (label) {
+            var label15 = document.querySelector('label[for="communities-0"]');
+            label15.textContent = 'First Community:';
+        }
+        var label = document.querySelector('label[for="communities-1"]') !==null;
+        if (label) {
+            var label16 = document.querySelector('label[for="communities-1"]');
+            label16.textContent = 'Second Community:';
+        }
+        var label = document.querySelector('label[for="communities-2"]') !==null;
+        if (label) {
+            var label17 = document.querySelector('label[for="communities-2"]');
+            label17.textContent = 'Third Community:';
+        }
+        var label = document.querySelector('label[for="communities-3"]') !==null;
+        if (label) {
+            var label18 = document.querySelector('label[for="communities-3"]');
+            label18.textContent = 'Fourth Community:';
+        }
+        var label = document.querySelector('label[for="communities-4"]') !==null;
+        if (label) {
+            var label19 = document.querySelector('label[for="communities-4"]');
+            label19.textContent = 'Fifth Community:';
+        }
+        var label = document.querySelector('label[for="communities-5"]') !==null;
+        if (label) {
+            var label20 = document.querySelector('label[for="communities-5"]');
+            label20.textContent = 'Sixth Community:';
+        }
+        var label = document.querySelector('label[for="communities-6"]') !==null;
+        if (label) {
+            var label21 = document.querySelector('label[for="communities-6"]');
+            label21.textContent = 'Seventh Community:';
+        }
+        var label = document.querySelector('label[for="communities-7"]') !==null;
+        if (label) {
+            var label22 = document.querySelector('label[for="communities-7"]');
+            label22.textContent = 'Eighth Community:';
+        }
+        var label = document.querySelector('label[for="communities-8"]') !==null;
+        if (label) {
+            var label23 = document.querySelector('label[for="communities-8"]');
+            label23.textContent = 'Ninth Community:';
+        }
+        var label = document.querySelector('label[for="communities-9"]') !==null;
+        if (label) {
+            var label24 = document.querySelector('label[for="communities-9"]');
+            label24.textContent = 'Tenth Community:';
+        }
+        var label = document.querySelector('label[for="communities-10"]') !==null;
+        if (label) {
+            var label25 = document.querySelector('label[for="communities-10"]');
+            label25.textContent = 'Eleventh Community:';
+        }
+        var label = document.querySelector('label[for="communities-11"]') !==null;
+        if (label) {
+            var label26 = document.querySelector('label[for="communities-11"]');
+            label26.textContent = 'Twelfth Community:';
+        }
+        var label = document.querySelector('label[for="communities-12"]') !==null;
+        if (label) {
+            var label27 = document.querySelector('label[for="communities-12"]');
+            label27.textContent = 'Thirteenth Community:';
+        }
+        var label = document.querySelector('label[for="communities-13"]') !==null;
+        if (label) {
+            var label28 = document.querySelector('label[for="communities-13"]');
+            label28.textContent = 'Fourteenth Community:';
+        }
+        var label = document.querySelector('label[for="communities-14"]') !==null;
+        if (label) {
+            var label29 = document.querySelector('label[for="communities-14"]');
+            label29.textContent = 'Fifteenth Community:';
+        }
+        var label = document.querySelector('label[for="militants-0"]') !==null;
+        if (label) {
+            var label30 = document.querySelector('label[for="militants-0"]');
+            label30.textContent = 'First Militant:';
+        }
+        var label = document.querySelector('label[for="militants-1"]') !==null;
+        if (label) {
+            var label31 = document.querySelector('label[for="militants-1"]');
+            label31.textContent = 'Second Militant:';
+        }
+        var label = document.querySelector('label[for="militants-2"]') !==null;
+        if (label) {
+            var label32 = document.querySelector('label[for="militants-2"]');
+            label32.textContent = 'Third Militant:';
+        }
+        var label = document.querySelector('label[for="militants-3"]') !==null;
+        if (label) {
+            var label33 = document.querySelector('label[for="militants-3"]');
+            label33.textContent = 'Fourth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-4"]') !==null;
+        if (label) {
+            var label34 = document.querySelector('label[for="militants-4"]');
+            label34.textContent = 'Fifth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-5"]') !==null;
+        if (label) {
+            var label35 = document.querySelector('label[for="militants-5"]');
+            label35.textContent = 'Sixth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-6"]') !==null;
+        if (label) {
+            var label36 = document.querySelector('label[for="militants-6"]');
+            label36.textContent = 'Seventh Militant:';
+        }
+        var label = document.querySelector('label[for="militants-7"]') !==null;
+        if (label) {
+            var label37 = document.querySelector('label[for="militants-7"]');
+            label37.textContent = 'Eighth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-8"]') !==null;
+        if (label) {
+            var label38 = document.querySelector('label[for="militants-8"]');
+            label38.textContent = 'Ninth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-9"]') !==null;
+        if (label) {
+            var label39 = document.querySelector('label[for="militants-9"]');
+            label39.textContent = 'Tenth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-10"]') !==null;
+        if (label) {
+            var label40 = document.querySelector('label[for="militants-10"]');
+            label40.textContent = 'Eleventh Militant:';
+        }
+        var label = document.querySelector('label[for="militants-11"]') !==null;
+        if (label) {
+            var label41 = document.querySelector('label[for="militants-11"]');
+            label41.textContent = 'Twelfth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-12"]') !==null;
+        if (label) {
+            var label42 = document.querySelector('label[for="militants-12"]');
+            label42.textContent = 'Thirteenth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-13"]') !==null;
+        if (label) {
+            var label43 = document.querySelector('label[for="militants-13"]');
+            label43.textContent = 'Fourteenth Militant:';
+        }
+        var label = document.querySelector('label[for="militants-14"]') !==null;
+        if (label) {
+            var label44 = document.querySelector('label[for="militants-14"]');
+            label44.textContent = 'Fifteenth Militant:'
+            }
+</script>
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Page 3</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <h3>Additional Attributes</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.regionpercent.label }}<br>
+            {{ form.regionpercent(size=32) }}
+        </p>
+        <p>
+            {{ form.grievances.label }}<br>
+            {{ form.grievances(size=32) }}
+        </p>
+        <p>
+            {{ form.affiliations.label }}<br>
+            {{ form.affiliations(size=32) }}
+        </p>
+        <p>
+            {{ form.milactive.label }}<br>
+            {{ form.milactive(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+<script>
+    var label = document.querySelector('label[for="regionpercent-0"]') !==null;
+    if (label) {
+        var label = document.querySelector('label[for="regionpercent-0"]');
+        label.textContent = 'Region 1: Community 1-';
+    }
+    var label = document.querySelector('label[for="regionpercent-1"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-1"]');
+        label1.textContent = 'Region 1: Community 2-';
+    }
+</script>
+{% endblock %}
+

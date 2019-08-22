@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>About</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+        <h3>About the Developer</h3>
+        <img class="col-sm-2" src="{{ url_for('static', filename='frances.jpg') }}" style="horiz-align:left">
+<p>
+        <div style= "width: 60%">Frances Duffy is a PhD Candidate at the University of North Carolina at Chapel Hill. She studies U.S. intervention in foreign conflict and its implications for interagency cooperation between the U.S. Department of State and the U.S. Department of Defense. Her dissertation will examine how varying forms of U.S. intervention can alter the incentives of conflict actors, with a focus on North Africa and the Sahel. Mrs. Duffy previously spent five years as a Foreign Service Officer with the U.S. Department of State, serving most recently as the Staff Assistant to the U.S. Ambassador to the European Union in Brussels, Belgium. She also served with the Bureau of Diplomatic Security in Tunisia and South Africa, with additional travel to nineteen U.S. missions throughout Africa.
+        </div>
+        {% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Start</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+    <div> To begin, start by completing the form below. You will be directed to three additional forms before initiating the
+    simulator.<br>
+    If you need help, hover over the ? beside each field for additional guidance.</div>
+    <h3>Properties of the Conflict Environment</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.totalpopulation.label }}<br>
+            {{ form.totalpopulation(size=32) }}
+            {% for error in form.totalpopulation.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numberregions.label }}<br>
+            {{ form.numberregions(size=32) }}
+            {% for error in form.numberregions.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numbercommunities.label }}<br>
+            {{ form.numbercommunities(size=32) }}
+            {% for error in form.numbercommunities.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numbermilitants.label }}<br>
+            {{ form.numbermilitants(size=32) }}
+            {% for error in form.numbermilitants.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            Wealth Values:
+            {{ form.l.label }}
+            {{ form.l(size=8) }}
+            {% for error in form.l.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.m.label }}
+            {{ form.m(size=8) }}
+            {% for error in form.m.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.h.label }}
+            {{ form.h(size=8) }}
+            {% for error in form.h.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.extortionrate.label }}<br>
+            {{ form.extortionrate(size=32) }}
+            {% for error in form.extortionrate.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.civsupportrate.label }}<br>
+            {{ form.civsupportrate(size=32) }}
+            {% for error in form.civsupportrate.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.terrorfactor.label }}<br>
+            {{ form.terrorfactor(size=32) }}
+            {% for error in form.terrorfactor.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

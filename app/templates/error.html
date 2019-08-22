@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Error</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+        <h3>Error</h3>
+        <p>
+        <div style="width: 60%">Unfortunately the simulator has encountered an error. This may be caused by an internal
+        problem, or there may be an error in the parameters that you have provided. Try running the simulator again, and
+        ensure that all of the necessary fields are complete and in the correct format.
+        </div>
+        </p>
+{% endblock %}
