@@ -4,40 +4,1072 @@
 <head>
     <title>Page 3</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    function myFunc(vars) {
+    return vars
+    }
+    </script>
+     <script type="text/javascript">
+        myVar = myFunc({ vars:tojson })
+     </script>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <h3>Additional Attributes</h3>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
-            {{ form.regionpercent.label }}<br>
-            {{ form.regionpercent(size=32) }}
+            {{ form.regionpercent.label }}
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Provide the percentage of the given region's population that identifies with each community, in decimal form. The sum of percentages for each region should equal 1" data-placement="right" alt="Help">
+            <br>{{ form.regionpercent(size=32) }}
         </p>
         <p>
-            {{ form.grievances.label }}<br>
-            {{ form.grievances(size=32) }}
+            {{ form.grievances.label }}
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Check the box if the first community has a grievance against the second community" data-placement="right" alt="Help">
+            <br>{{ form.grievances(size=32) }}
         </p>
         <p>
-            {{ form.affiliations.label }}<br>
-            {{ form.affiliations(size=32) }}
+            {{ form.affiliations.label }}
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Check the box if the community has an affiliation with the stated militant" data-placement="right" alt="Help">
+            <br>{{ form.affiliations(size=32) }}
         </p>
         <p>
-            {{ form.milactive.label }}<br>
-            {{ form.milactive(size=32) }}
+            {{ form.milactive.label }}
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Check the box if the militant is active or seeking power in the stated region" data-placement="right" alt="Help">
+            <br>{{ form.milactive(size=32) }}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p><input type=submit class='btn btn-primary btn-lg' value="Continue"></p>
     </form>
 <script>
     var label = document.querySelector('label[for="regionpercent-0"]') !==null;
     if (label) {
         var label = document.querySelector('label[for="regionpercent-0"]');
-        label.textContent = 'Region 1: Community 1-';
+        label.textContent = '{{ region_percent_list[0] }}';
     }
     var label = document.querySelector('label[for="regionpercent-1"]') !==null;
     if (label) {
         var label1 = document.querySelector('label[for="regionpercent-1"]');
-        label1.textContent = 'Region 1: Community 2-';
+        label1.textContent = '{{ region_percent_list[1] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-2"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-2"]');
+        label1.textContent = '{{ region_percent_list[2] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-3"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-3"]');
+        label1.textContent = '{{ region_percent_list[3] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-4"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-4"]');
+        label1.textContent = '{{ region_percent_list[4] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-5"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-5"]');
+        label1.textContent = '{{ region_percent_list[5] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-6"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-6"]');
+        label1.textContent = '{{ region_percent_list[6] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-7"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-7"]');
+        label1.textContent = '{{ region_percent_list[7] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-8"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-8"]');
+        label1.textContent = '{{ region_percent_list[8] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-9"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-9"]');
+        label1.textContent = '{{ region_percent_list[9] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-10"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-10"]');
+        label1.textContent = '{{ region_percent_list[10] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-11"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-11"]');
+        label1.textContent = '{{ region_percent_list[11] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-12"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-12"]');
+        label1.textContent = '{{ region_percent_list[12] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-13"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-13"]');
+        label1.textContent = '{{ region_percent_list[13] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-14"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-14"]');
+        label1.textContent = '{{ region_percent_list[14] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-15"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-15"]');
+        label1.textContent = '{{ region_percent_list[15] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-16"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-16"]');
+        label1.textContent = '{{ region_percent_list[16] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-17"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-17"]');
+        label1.textContent = '{{ region_percent_list[17] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-18"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-18"]');
+        label1.textContent = '{{ region_percent_list[18] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-19"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-19"]');
+        label1.textContent = '{{ region_percent_list[19] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-20"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-20"]');
+        label1.textContent = '{{ region_percent_list[20] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-21"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-21"]');
+        label1.textContent = '{{ region_percent_list[21] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-22"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-22"]');
+        label1.textContent = '{{ region_percent_list[22] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-23"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-23"]');
+        label1.textContent = '{{ region_percent_list[23] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-24"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-24"]');
+        label1.textContent = '{{ region_percent_list[24] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-25"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-25"]');
+        label1.textContent = '{{ region_percent_list[25] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-26"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-26"]');
+        label1.textContent = '{{ region_percent_list[26] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-27"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-27"]');
+        label1.textContent = '{{ region_percent_list[27] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-28"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-28"]');
+        label1.textContent = '{{ region_percent_list[28] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-29"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-29"]');
+        label1.textContent = '{{ region_percent_list[29] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-30"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-30"]');
+        label1.textContent = '{{ region_percent_list[30] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-31"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-31"]');
+        label1.textContent = '{{ region_percent_list[31] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-32"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-32"]');
+        label1.textContent = '{{ region_percent_list[32] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-33"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-33"]');
+        label1.textContent = '{{ region_percent_list[33] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-34"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-34"]');
+        label1.textContent = '{{ region_percent_list[34] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-35"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-35"]');
+        label1.textContent = '{{ region_percent_list[35] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-36"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-36"]');
+        label1.textContent = '{{ region_percent_list[36] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-37"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-37"]');
+        label1.textContent = '{{ region_percent_list[37] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-38"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-38"]');
+        label1.textContent = '{{ region_percent_list[38] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-39"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-39"]');
+        label1.textContent = '{{ region_percent_list[39] }}';
+    }
+    var label = document.querySelector('label[for="regionpercent-40"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="regionpercent-40"]');
+        label1.textContent = '{{ region_percent_list[40] }}';
+    }
+
+
+
+    var label = document.querySelector('label[for="grievances-0"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-0"]');
+        label1.textContent = '{{ community_label_list[0] }}';
+    }
+    var label = document.querySelector('label[for="grievances-1"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-1"]');
+        label1.textContent = '{{ community_label_list[1] }}';
+    }
+    var label = document.querySelector('label[for="grievances-2"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-2"]');
+        label1.textContent = '{{ community_label_list[2] }}';
+    }
+    var label = document.querySelector('label[for="grievances-3"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-3"]');
+        label1.textContent = '{{ community_label_list[3] }}';
+    }
+    var label = document.querySelector('label[for="grievances-4"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-4"]');
+        label1.textContent = '{{ community_label_list[4] }}';
+    }
+    var label = document.querySelector('label[for="grievances-5"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-5"]');
+        label1.textContent = '{{ community_label_list[5] }}';
+    }
+    var label = document.querySelector('label[for="grievances-6"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-6"]');
+        label1.textContent = '{{ community_label_list[6] }}';
+    }
+    var label = document.querySelector('label[for="grievances-7"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-7"]');
+        label1.textContent = '{{ community_label_list[7] }}';
+    }
+    var label = document.querySelector('label[for="grievances-8"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-8"]');
+        label1.textContent = '{{ community_label_list[8] }}';
+    }
+    var label = document.querySelector('label[for="grievances-9"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-9"]');
+        label1.textContent = '{{ community_label_list[9] }}';
+    }
+    var label = document.querySelector('label[for="grievances-10"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-10"]');
+        label1.textContent = '{{ community_label_list[10] }}';
+    }
+    var label = document.querySelector('label[for="grievances-11"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-11"]');
+        label1.textContent = '{{ community_label_list[11] }}';
+    }
+    var label = document.querySelector('label[for="grievances-12"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-12"]');
+        label1.textContent = '{{ community_label_list[12] }}';
+    }
+    var label = document.querySelector('label[for="grievances-13"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-13"]');
+        label1.textContent = '{{ community_label_list[13] }}';
+    }
+    var label = document.querySelector('label[for="grievances-14"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-14"]');
+        label1.textContent = '{{ community_label_list[14] }}';
+    }
+    var label = document.querySelector('label[for="grievances-15"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-15"]');
+        label1.textContent = '{{ community_label_list[15] }}';
+    }
+    var label = document.querySelector('label[for="grievances-16"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-16"]');
+        label1.textContent = '{{ community_label_list[16] }}';
+    }
+    var label = document.querySelector('label[for="grievances-17"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-17"]');
+        label1.textContent = '{{ community_label_list[17] }}';
+    }
+    var label = document.querySelector('label[for="grievances-18"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-18"]');
+        label1.textContent = '{{ community_label_list[18] }}';
+        var label = document.querySelector('label[for="grievances-19"]') !== null;
+    }
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-19"]');
+        label1.textContent = '{{ community_label_list[19] }}';
+    }
+    var label = document.querySelector('label[for="grievances-20"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-20"]');
+        label1.textContent = '{{ community_label_list[20] }}';
+    }
+    var label = document.querySelector('label[for="grievances-21"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-21"]');
+        label1.textContent = '{{ community_label_list[21] }}';
+    }
+    var label = document.querySelector('label[for="grievances-22"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-22"]');
+        label1.textContent = '{{ community_label_list[22] }}';
+    }
+    var label = document.querySelector('label[for="grievances-23"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-23"]');
+        label1.textContent = '{{ community_label_list[23] }}';
+    }
+    var label = document.querySelector('label[for="grievances-24"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-24"]');
+        label1.textContent = '{{ community_label_list[24] }}';
+    }
+    var label = document.querySelector('label[for="grievances-25"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-25"]');
+        label1.textContent = '{{ community_label_list[25] }}';
+    }
+    var label = document.querySelector('label[for="grievances-26"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-26"]');
+        label1.textContent = '{{ community_label_list[26] }}';
+    }
+    var label = document.querySelector('label[for="grievances-27"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-27"]');
+        label1.textContent = '{{ community_label_list[27] }}';
+    }
+    var label = document.querySelector('label[for="grievances-28"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-28"]');
+        label1.textContent = '{{ community_label_list[28] }}';
+    }
+    var label = document.querySelector('label[for="grievances-29"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-29"]');
+        label1.textContent = '{{ community_label_list[29] }}';
+    }
+    var label = document.querySelector('label[for="grievances-30"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-30"]');
+        label1.textContent = '{{ community_label_list[30] }}';
+    }
+    var label = document.querySelector('label[for="grievances-31"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-31"]');
+        label1.textContent = '{{ community_label_list[31] }}';
+    }
+    var label = document.querySelector('label[for="grievances-32"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-32"]');
+        label1.textContent = '{{ community_label_list[32] }}';
+    }
+        var label = document.querySelector('label[for="grievances-33"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-33"]');
+        label1.textContent = '{{ community_label_list[33] }}';
+    }
+    var label = document.querySelector('label[for="grievances-34"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-34"]');
+        label1.textContent = '{{ community_label_list[34] }}';
+    }
+    var label = document.querySelector('label[for="grievances-35"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-35"]');
+        label1.textContent = '{{ community_label_list[35] }}';
+    }
+    var label = document.querySelector('label[for="grievances-36"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-36"]');
+        label1.textContent = '{{ community_label_list[36] }}';
+    }
+    var label = document.querySelector('label[for="grievances-37"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-37"]');
+        label1.textContent = '{{ community_label_list[37] }}';
+    }
+    var label = document.querySelector('label[for="grievances-38"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-38"]');
+        label1.textContent = '{{ community_label_list[38] }}';
+    }
+    var label = document.querySelector('label[for="grievances-39"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-39"]');
+        label1.textContent = '{{ community_label_list[39] }}';
+    }
+    var label = document.querySelector('label[for="grievances-40"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-40"]');
+        label1.textContent = '{{ community_label_list[40] }}';
+    }
+    var label = document.querySelector('label[for="grievances-41"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-41"]');
+        label1.textContent = '{{ community_label_list[41] }}';
+    }
+    var label = document.querySelector('label[for="grievances-42"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-42"]');
+        label1.textContent = '{{ community_label_list[42] }}';
+    }
+    var label = document.querySelector('label[for="grievances-43"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-43"]');
+        label1.textContent = '{{ community_label_list[43] }}';
+    }
+    var label = document.querySelector('label[for="grievances-44"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-44"]');
+        label1.textContent = '{{ community_label_list[44] }}';
+    }
+    var label = document.querySelector('label[for="grievances-45"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-45"]');
+        label1.textContent = '{{ community_label_list[45] }}';
+    }
+    var label = document.querySelector('label[for="grievances-46"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-46"]');
+        label1.textContent = '{{ community_label_list[46] }}';
+    }
+    var label = document.querySelector('label[for="grievances-47"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-47"]');
+        label1.textContent = '{{ community_label_list[47] }}';
+    }
+    var label = document.querySelector('label[for="grievances-48"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-48"]');
+        label1.textContent = '{{ community_label_list[48] }}';
+    }
+    var label = document.querySelector('label[for="grievances-49"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-49"]');
+        label1.textContent = '{{ community_label_list[49] }}';
+    }
+    var label = document.querySelector('label[for="grievances-50"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-50"]');
+        label1.textContent = '{{ community_label_list[50] }}';
+    }
+    var label = document.querySelector('label[for="grievances-51"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-51"]');
+        label1.textContent = '{{ community_label_list[51] }}';
+    }
+    var label = document.querySelector('label[for="grievances-52"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-52"]');
+        label1.textContent = '{{ community_label_list[52] }}';
+    }
+    var label = document.querySelector('label[for="grievances-53"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-53"]');
+        label1.textContent = '{{ community_label_list[53] }}';
+    }
+    var label = document.querySelector('label[for="grievances-54"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-54"]');
+        label1.textContent = '{{ community_label_list[54] }}';
+    }
+    var label = document.querySelector('label[for="grievances-55"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-55"]');
+        label1.textContent = '{{ community_label_list[55] }}';
+    }
+    var label = document.querySelector('label[for="grievances-56"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="grievances-56"]');
+        label1.textContent = '{{ community_label_list[56] }}';
+    }
+
+
+    var label = document.querySelector('label[for="affiliations-0"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-0"]');
+        label1.textContent = '{{ affiliation_label_list[0] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-1"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-1"]');
+        label1.textContent = '{{ affiliation_label_list[1] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-2"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-2"]');
+        label1.textContent = '{{ affiliation_label_list[2] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-3"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-3"]');
+        label1.textContent = '{{ affiliation_label_list[3] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-4"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-4"]');
+        label1.textContent = '{{ affiliation_label_list[4] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-5"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-5"]');
+        label1.textContent = '{{ affiliation_label_list[5] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-6"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-6"]');
+        label1.textContent = '{{ affiliation_label_list[6] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-7"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-7"]');
+        label1.textContent = '{{ affiliation_label_list[7] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-8"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-8"]');
+        label1.textContent = '{{ affiliation_label_list[8] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-9"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-9"]');
+        label1.textContent = '{{ affiliation_label_list[9] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-10"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-10"]');
+        label1.textContent = '{{ affiliation_label_list[10] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-11"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-11"]');
+        label1.textContent = '{{ affiliation_label_list[11] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-12"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-12"]');
+        label1.textContent = '{{ affiliation_label_list[12] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-13"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-13"]');
+        label1.textContent = '{{ affiliation_label_list[13] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-14"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-14"]');
+        label1.textContent = '{{ affiliation_label_list[14] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-15"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-15"]');
+        label1.textContent = '{{ affiliation_label_list[15] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-16"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-16"]');
+        label1.textContent = '{{ affiliation_label_list[16] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-17"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-17"]');
+        label1.textContent = '{{ affiliation_label_list[17] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-18"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-18"]');
+        label1.textContent = '{{ affiliation_label_list[18] }}';
+        var label = document.querySelector('label[for="affiliations-19"]') !== null;
+    }
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-19"]');
+        label1.textContent = '{{ affiliation_label_list[19] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-20"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-20"]');
+        label1.textContent = '{{ affiliation_label_list[20] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-21"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-21"]');
+        label1.textContent = '{{ affiliation_label_list[21] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-22"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-22"]');
+        label1.textContent = '{{ affiliation_label_list[22] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-23"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-23"]');
+        label1.textContent = '{{ affiliation_label_list[23] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-24"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-24"]');
+        label1.textContent = '{{ affiliation_label_list[24] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-25"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-25"]');
+        label1.textContent = '{{ affiliation_label_list[25] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-26"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-26"]');
+        label1.textContent = '{{ affiliation_label_list[26] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-27"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-27"]');
+        label1.textContent = '{{ affiliation_label_list[27] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-28"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-28"]');
+        label1.textContent = '{{ affiliation_label_list[28] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-29"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-29"]');
+        label1.textContent = '{{ affiliation_label_list[29] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-30"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-30"]');
+        label1.textContent = '{{ affiliation_label_list[30] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-31"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-31"]');
+        label1.textContent = '{{ affiliation_label_list[31] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-32"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-32"]');
+        label1.textContent = '{{ affiliation_label_list[32] }}';
+    }
+        var label = document.querySelector('label[for="affiliations-33"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-33"]');
+        label1.textContent = '{{ affiliation_label_list[33] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-34"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-34"]');
+        label1.textContent = '{{ affiliation_label_list[34] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-35"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-35"]');
+        label1.textContent = '{{ affiliation_label_list[35] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-36"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-36"]');
+        label1.textContent = '{{ affiliation_label_list[36] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-37"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-37"]');
+        label1.textContent = '{{ affiliation_label_list[37] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-38"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-38"]');
+        label1.textContent = '{{ affiliation_label_list[38] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-39"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-39"]');
+        label1.textContent = '{{ affiliation_label_list[39] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-40"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-40"]');
+        label1.textContent = '{{ affiliation_label_list[40] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-41"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-41"]');
+        label1.textContent = '{{ affiliation_label_list[41] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-42"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-42"]');
+        label1.textContent = '{{ affiliation_label_list[42] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-43"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-43"]');
+        label1.textContent = '{{ affiliation_label_list[43] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-44"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-44"]');
+        label1.textContent = '{{ affiliation_label_list[44] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-45"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-45"]');
+        label1.textContent = '{{ affiliation_label_list[45] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-46"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-46"]');
+        label1.textContent = '{{ affiliation_label_list[46] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-47"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-47"]');
+        label1.textContent = '{{ affiliation_label_list[47] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-48"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-48"]');
+        label1.textContent = '{{ affiliation_label_list[48] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-49"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-49"]');
+        label1.textContent = '{{ affiliation_label_list[49] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-50"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-50"]');
+        label1.textContent = '{{ affiliation_label_list[50] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-51"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-51"]');
+        label1.textContent = '{{ affiliation_label_list[51] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-52"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-52"]');
+        label1.textContent = '{{ affiliation_label_list[52] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-53"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-53"]');
+        label1.textContent = '{{ affiliation_label_list[53] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-54"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-54"]');
+        label1.textContent = '{{ affiliation_label_list[54] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-55"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-55"]');
+        label1.textContent = '{{ affiliation_label_list[55] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-56"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-56"]');
+        label1.textContent = '{{ affiliation_label_list[56] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-57"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-57"]');
+        label1.textContent = '{{ affiliation_label_list[57] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-58"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-58"]');
+        label1.textContent = '{{ affiliation_label_list[58] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-59"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-59"]');
+        label1.textContent = '{{ affiliation_label_list[59] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-60"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-60"]');
+        label1.textContent = '{{ affiliation_label_list[60] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-61"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-61"]');
+        label1.textContent = '{{ affiliation_label_list[61] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-62"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-62"]');
+        label1.textContent = '{{ affiliation_label_list[62] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-63"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-63"]');
+        label1.textContent = '{{ affiliation_label_list[63] }}';
+    }
+    var label = document.querySelector('label[for="affiliations-64"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="affiliations-64"]');
+        label1.textContent = '{{ affiliation_label_list[64] }}';
+    }
+
+
+    var label = document.querySelector('label[for="milactive-0"]') !==null;
+    if (label) {
+        var label = document.querySelector('label[for="milactive-0"]');
+        label.textContent = '{{ region_label_list[0] }}';
+    }
+    var label = document.querySelector('label[for="milactive-1"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-1"]');
+        label1.textContent = '{{ region_label_list[1] }}';
+    }
+    var label = document.querySelector('label[for="milactive-2"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-2"]');
+        label1.textContent = '{{ region_label_list[2] }}';
+    }
+    var label = document.querySelector('label[for="milactive-3"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-3"]');
+        label1.textContent = '{{ region_label_list[3] }}';
+    }
+    var label = document.querySelector('label[for="milactive-4"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-4"]');
+        label1.textContent = '{{ region_label_list[4] }}';
+    }
+    var label = document.querySelector('label[for="milactive-5"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-5"]');
+        label1.textContent = '{{ region_label_list[5] }}';
+    }
+    var label = document.querySelector('label[for="milactive-6"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-6"]');
+        label1.textContent = '{{ region_label_list[6] }}';
+    }
+    var label = document.querySelector('label[for="milactive-7"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-7"]');
+        label1.textContent = '{{ region_label_list[7] }}';
+    }
+    var label = document.querySelector('label[for="milactive-8"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-8"]');
+        label1.textContent = '{{ region_label_list[8] }}';
+    }
+    var label = document.querySelector('label[for="milactive-9"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-9"]');
+        label1.textContent = '{{ region_label_list[9] }}';
+    }
+    var label = document.querySelector('label[for="milactive-10"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-10"]');
+        label1.textContent = '{{ region_label_list[10] }}';
+    }
+    var label = document.querySelector('label[for="milactive-11"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-11"]');
+        label1.textContent = '{{ region_label_list[11] }}';
+    }
+    var label = document.querySelector('label[for="milactive-12"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-12"]');
+        label1.textContent = '{{ region_label_list[12] }}';
+    }
+    var label = document.querySelector('label[for="milactive-13"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-13"]');
+        label1.textContent = '{{ region_label_list[13] }}';
+    }
+    var label = document.querySelector('label[for="milactive-14"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-14"]');
+        label1.textContent = '{{ region_label_list[14] }}';
+    }
+    var label = document.querySelector('label[for="milactive-15"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-15"]');
+        label1.textContent = '{{ region_label_list[15] }}';
+    }
+    var label = document.querySelector('label[for="milactive-16"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-16"]');
+        label1.textContent = '{{ region_label_list[16] }}';
+    }
+    var label = document.querySelector('label[for="milactive-17"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-17"]');
+        label1.textContent = '{{ region_label_list[17] }}';
+    }
+    var label = document.querySelector('label[for="milactive-18"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-18"]');
+        label1.textContent = '{{ region_label_list[18] }}';
+    }
+    var label = document.querySelector('label[for="milactive-19"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-19"]');
+        label1.textContent = '{{ region_label_list[19] }}';
+    }
+    var label = document.querySelector('label[for="milactive-20"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-20"]');
+        label1.textContent = '{{ region_label_list[20] }}';
+    }
+    var label = document.querySelector('label[for="milactive-21"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-21"]');
+        label1.textContent = '{{ region_label_list[21] }}';
+    }
+    var label = document.querySelector('label[for="milactive-22"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-22"]');
+        label1.textContent = '{{ region_label_list[22] }}';
+    }
+    var label = document.querySelector('label[for="milactive-23"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-23"]');
+        label1.textContent = '{{ region_label_list[23] }}';
+    }
+    var label = document.querySelector('label[for="milactive-24"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-24"]');
+        label1.textContent = '{{ region_label_list[24] }}';
+    }
+    var label = document.querySelector('label[for="milactive-25"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-25"]');
+        label1.textContent = '{{ region_label_list[25] }}';
+    }
+    var label = document.querySelector('label[for="milactive-26"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-26"]');
+        label1.textContent = '{{ region_label_list[26] }}';
+    }
+    var label = document.querySelector('label[for="milactive-27"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-27"]');
+        label1.textContent = '{{ region_label_list[27] }}';
+    }
+    var label = document.querySelector('label[for="milactive-28"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-28"]');
+        label1.textContent = '{{ region_label_list[28] }}';
+    }
+    var label = document.querySelector('label[for="milactive-29"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-29"]');
+        label1.textContent = '{{ region_label_list[29] }}';
+    }
+    var label = document.querySelector('label[for="milactive-30"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-30"]');
+        label1.textContent = '{{ region_label_list[30] }}';
+    }
+    var label = document.querySelector('label[for="milactive-31"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-31"]');
+        label1.textContent = '{{ region_label_list[31] }}';
+    }
+    var label = document.querySelector('label[for="milactive-32"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-32"]');
+        label1.textContent = '{{ region_label_list[32] }}';
+    }
+    var label = document.querySelector('label[for="milactive-33"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-33"]');
+        label1.textContent = '{{ region_label_list[33] }}';
+    }
+    var label = document.querySelector('label[for="milactive-34"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-34"]');
+        label1.textContent = '{{ region_label_list[34] }}';
+    }
+    var label = document.querySelector('label[for="milactive-35"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-35"]');
+        label1.textContent = '{{ region_label_list[35] }}';
+    }
+    var label = document.querySelector('label[for="milactive-36"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-36"]');
+        label1.textContent = '{{ region_label_list[36] }}';
+    }
+    var label = document.querySelector('label[for="milactive-37"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-37"]');
+        label1.textContent = '{{ region_label_list[37] }}';
+    }
+    var label = document.querySelector('label[for="milactive-38"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-38"]');
+        label1.textContent = '{{ region_label_list[38] }}';
+    }
+    var label = document.querySelector('label[for="milactive-39"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-39"]');
+        label1.textContent = '{{ region_label_list[39] }}';
+    }
+    var label = document.querySelector('label[for="milactive-40"]') !==null;
+    if (label) {
+        var label1 = document.querySelector('label[for="milactive-40"]');
+        label1.textContent = '{{ region_label_list[40] }}';
     }
 </script>
 {% endblock %}

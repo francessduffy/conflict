@@ -25,30 +25,31 @@
 
 
 <body>
+<h3>Results</h3>
+<h5><b>The strongest militant following the intervention is {{ strongestmname }}, with a final strength of {{ strongestm }}.</b></h5>
+<h5><b>The average probability of fighting between militants has {{ fightingchange }}{{ fightingave }} from {{ fightingpre }} to {{ fightingpost }}.</b></h5>
+<h5><b>The amount of community defending has {{ defendingchange }}{{ defendingtot }}.</b></h5>
 
-    <div style="text-align:left">
-        <p style="color:black;font-size:40px;">Results</p></div>
-
-    <h5>The strongest militant following the intervention is {{ strongestmname }}, with a final strength of {{ strongestm }}. </h5>
-    <h5>The average probability of fighting between militants has {{ fightingchange }}{{ fightingave }} from {{ fightingpre }} to {{ fightingpost }}.</h5>
-    <h5>The amount of community defending has {{ defendingchange }}{{ defendingtot }}.</h5>
-
-    <table>
+    <table class="page">
         <tr>
-        <td style="width: 700px">
-            {% for table in tables %}
-            <h4>{{titles[loop.index]}}</h4>
-            {{ table|safe }}
-            <p>
-            {% endfor %}
+        <td style="width: 45%">
+            <h4>Militant Strength Before and After Intervention</h4>
+            <h5><i>Ranked from strongest to weakest post-intervention</i> </h5>
+                {{ table1|safe }}<br>
+            <h4>Fighting Between Militant Groups</h4>
+                {{ table2|safe }}<br>
+            <h4>Defending by Communities</h4>
+                {{ table3|safe }}<br>
         </td>
     <td>
         <div style="text-align: center">
-            <a href="" title="Switch" class="graph1">Militant Strength</a>
-            <a href="" title="Switch" class="graph2">Militant Fighting</a>
-            <a href="" title="Switch" class="graph3">Community Defending</a>
+            <a href="" title="Switch" class="graph1"><button type="button" class="btn btn-primary btn-sm"><b>Militant Strength</b></button></a>
+            <a href="" title="Switch" class="graph2"><button type="button" class="btn btn-primary btn-sm"><b>Militant Fighting</b></button></a>
+            <a href="" title="Switch" class="graph3"><button type="button" class="btn btn-primary btn-sm"><b>Community Defending</b></button></a>
         </div>
-        <img id ="graph" src = "/static/graph1.png?u={{ last_updated }}">
+        <figure>
+            <img id ="graph" src = "/static/graph1.png?u={{ last_updated }}">
+        </figure>
     </td>
         </tr>
         </table>

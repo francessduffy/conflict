@@ -4,16 +4,23 @@
 <head>
     <title>Start</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
 </head>
     <div> To begin, start by completing the form below. You will be directed to three additional forms before initiating the
     simulator.<br>
-    If you need help, hover over the ? beside each field for additional guidance.</div>
+    If you need help, hover over the <img id ="question" src = "/static/question.png" style="width:15px;height:15px;" alt="Help"> beside each field for additional guidance.</div>
     <h3>Properties of the Conflict Environment</h3>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
             {{ form.totalpopulation.label }}<br>
             {{ form.totalpopulation(size=32) }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
             {% for error in form.totalpopulation.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -21,6 +28,7 @@
         <p>
             {{ form.numberregions.label }}<br>
             {{ form.numberregions(size=32) }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
             {% for error in form.numberregions.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -28,6 +36,7 @@
         <p>
             {{ form.numbercommunities.label }}<br>
             {{ form.numbercommunities(size=32) }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
             {% for error in form.numbercommunities.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -35,12 +44,13 @@
         <p>
             {{ form.numbermilitants.label }}<br>
             {{ form.numbermilitants(size=32) }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
             {% for error in form.numbermilitants.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
-            Wealth Values:
+            <b>Wealth Values:</b>
             {{ form.l.label }}
             {{ form.l(size=8) }}
             {% for error in form.l.errors %}
@@ -53,6 +63,7 @@
             {% endfor %}
             {{ form.h.label }}
             {{ form.h(size=8) }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
             {% for error in form.h.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -60,6 +71,7 @@
         <p>
             {{ form.extortionrate.label }}<br>
             {{ form.extortionrate(size=32) }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
             {% for error in form.extortionrate.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -67,6 +79,7 @@
         <p>
             {{ form.civsupportrate.label }}<br>
             {{ form.civsupportrate(size=32) }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
             {% for error in form.civsupportrate.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -74,10 +87,11 @@
         <p>
             {{ form.terrorfactor.label }}<br>
             {{ form.terrorfactor(size=32) }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
             {% for error in form.terrorfactor.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p><input type=submit class='btn btn-primary btn-lg' value="Continue"></p>
     </form>
 {% endblock %}

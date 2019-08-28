@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Thanks</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+        <h4>Your message has been submitted.</h4>
+        <p>
+        Thank you very much for your {{ subject }}. You will receive a response within 1 to 3 business days.
+        </p>
+{% endblock %}

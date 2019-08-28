@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, jsonify, session
+from flask_mail import Message, Mail
 from app import app
-from app.forms import FirstForm, SecondForm, ThirdForm, FourthForm, ExamplesForm
+from app.forms import FirstForm, SecondForm, ThirdForm, FourthForm, ExamplesForm, Contact
 from app.tasks import launch_simulator, get_progress, graphing
 from app.calculations import calculations, summary_results
 from app.parameters import get_parameters
@@ -8,10 +9,15 @@ from threading import Thread
 import pandas as pd
 from pandas import DataFrame
 import os
+import networkx as nx
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import figure
 from shutil import copyfile
 
 th = Thread()
 finished = False
+mail = Mail()
+mail.init_app(app)
 
 def dir_last_updated(folder):
     return str(max(os.path.getmtime(os.path.join(root_path, f))
@@ -35,6 +41,23 @@ def instructions():
 def about():
     return render_template('about.html', title='About')
 
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = Contact()
+    if form.validate_on_submit():
+        subject = form.subject.data
+        session['subject'] = subject
+        msg = Message('Conflict Website: '+form.subject.data, sender=form.email.data, recipients=['francessduffy@gmail.com'])
+        msg.body = "You have received the following message from {} <{}>: {}".format(form.name.data, form.email.data, form.message.data)
+        mail.send(msg)
+        return redirect(url_for('thanks'))
+    return render_template('contact.html', title='Contact', form=form)
+
+@app.route('/thanks')
+def thanks():
+    subject = session.get('subject', None)
+    return render_template('thanks.html', title='Thanks', subject=subject)
+
 @app.route('/options')
 def options():
     return render_template('options.html', title='Options')
@@ -51,7 +74,6 @@ def examples():
             return redirect(url_for('examples'))
         if threemil == True:
             os.remove('app/static/form1.csv')
-            print('removed 3')
             os.remove('app/model/static2/form1.csv')
             copyfile('app/static/examples/threemil_form1.csv', 'app/static/form1.csv')
             copyfile('app/static/examples/threemil_form1.csv', 'app/model/static2/form1.csv')
@@ -105,7 +127,6 @@ def examples():
 
         if twomil == True:
             os.remove('app/static/form1.csv')
-            print('removed 2')
             os.remove('app/model/static2/form1.csv')
             copyfile('app/static/examples/twomil_form1.csv', 'app/static/form1.csv')
             copyfile('app/static/examples/twomil_form1.csv', 'app/model/static2/form1.csv')
@@ -154,6 +175,7 @@ def examples():
             session['communitynames'] = communitynames
             session['regionnames'] = regionnames
             session['militantnames'] = militantnames
+            print('session boxlist:', boxlist)
             session['boxlist'] = boxlist
             session['boxmlist'] = boxmlist
         return redirect(url_for('summary'))
@@ -229,6 +251,25 @@ def page3():
     regionnames = session.get('regionnames', None)
     communitynames = session.get('communitynames', None)
     militantnames = session.get('militantnames', None)
+
+    region_percent_list = []
+    for i in regionnames:
+        for j in communitynames:
+            region_percent_list.append('% population of ' + i + ' belonging to ' + j + ':')
+    community_label_list = []
+    for i in communitynames:
+        for j in communitynames:
+            if i != j:
+                community_label_list.append(i + ' against ' + j + ':')
+    affiliation_label_list = []
+    for i in communitynames:
+        for j in militantnames:
+            affiliation_label_list.append(i + ' with ' + j + ':')
+    region_label_list = []
+    for i in militantnames:
+        for j in regionnames:
+            region_label_list.append(i + ' in ' + j + ':')
+
     form = ThirdForm()
     if form.validate_on_submit():
         data = form.regionpercent.data
@@ -303,7 +344,7 @@ def page3():
         form.affiliations.append_entry()
     for i in range(len(regionnames)*len(militantnames)):
         form.milactive.append_entry()
-    return render_template('page3.html', title='Third Page', form=form)
+    return render_template('page3.html', title='Third Page', form=form, region_percent_list=region_percent_list, community_label_list=community_label_list, affiliation_label_list=affiliation_label_list, region_label_list=region_label_list)
 
 @app.route('/summary', methods=['GET', 'POST'])
 def summary():
@@ -313,6 +354,7 @@ def summary():
     boxlist = session.get('boxlist', None)
     boxmlist = session.get('boxmlist', None)
     grievances = []
+    z = 0
     for i in boxlist:
         list = []
         x = 0
@@ -322,15 +364,37 @@ def summary():
                 y = 1
             else:
                 y = 0
-            if i.index == x:
+            if z == x:
                 list.append(0)
                 list.append(y)
             else:
                 list.append(y)
             x += 1
         grievances.append(list)
-    grievances = pd.DataFrame(grievances, columns=None, index=None)
+        z += 1
+    grievances[len(grievances) - 1].append(0)
+    grievances = pd.DataFrame(grievances, columns=communitynames, index=communitynames)
     grievances.transpose()
+    numpy_grievances = grievances.values
+    network = nx.DiGraph(numpy_grievances)
+    pos = nx.circular_layout(network)
+    x = 0
+    keys = []
+    for i in communitynames:
+        keys.append(x)
+        x += 1
+    labels = dict(zip(keys, communitynames))
+    pos_attrs = {}
+    for node, coords in pos.items():
+        pos_attrs[node] = (coords[0], coords[1] + .1)
+    nx.draw_networkx_nodes(network, pos, node_color='orange')
+    nx.draw_networkx_edges(network, pos, arrowsize=30, edge_color='gray')
+    nx.draw_networkx_labels(network, pos, labels, font_size=12, font_weight='bold')
+    # plt.gcf().subplots_adjust(top=0.2)
+    # rcParams.update({'figure.autolayout': True})
+    plt.box(False)
+    plt.savefig("app/static/network.png")
+    plt.clf()
     affiliations = []
     for i in boxmlist:
         list = []
@@ -342,14 +406,14 @@ def summary():
                 y = 0
             list.append(y)
         affiliations.append(list)
-    affiliations = pd.DataFrame(affiliations, columns=None, index=None)
+    affiliations = pd.DataFrame(affiliations, columns=militantnames, index=communitynames)
     form = FourthForm()
     if form.validate_on_submit():
         form4 = DataFrame({'supported_militants': form.supported_militants.data, 'opposed_militants': form.opposed_militants.data, 'negotiate': form.negotiate.data, 'negotiate2': form.negotiate2.data, 'mil1': form.mil1.data, 'mil2': form.mil2.data, 'infocampaign': form.infocampaign.data, 'supportmilgov': form.supportmilgov.data, 'civwealth': form.civwealth.data, 'wealthregions': form.wealthregions.data, 'wealthcomms': form.wealthcomms.data, 'commbenefits': form.commbenefits.data, 'milbenefits': form.milbenefits.data, 'civbenefits': form.civbenefits.data, 'fundmil': form.fundmil.data, 'fundmilamt': form.fundmilamt.data, 'cutoff': form.cutoff.data, 'cutoffamt': form.cutoffamt.data, 'attack': form.attack.data, 'punish': form.punish.data, 'weapons': form.weapons.data, 'weaponsregions': form.weaponsregions.data, 'trainequip': form.trainequip.data, 'protect': form.protect.data}, index=[0])
         form4.to_csv('app/static/form4.csv')
         form4.to_csv('app/model/static2/form4.csv')
         return redirect(url_for('processing'))
-    return render_template('summary.html', title='Summary', tables=[grievances.to_html(classes='grievances'), affiliations.to_html(classes='affiliations')], titles = ['Grievances', 'Affiliations'], form=form, regionnames=regionnames, communitynames=communitynames, militantnames=militantnames)
+    return render_template('summary.html', last_updated=dir_last_updated('app/static'), title='Summary', table1=grievances.to_html(classes='grievances'), table2=affiliations.to_html(classes='affiliations'), form=form, regionnames=regionnames, communitynames=communitynames, militantnames=militantnames)
 
 @app.route('/processing')
 def processing():
@@ -386,15 +450,17 @@ def results():
         results_dataframes = calculations(df, militants, communities, militantnames, communitynames)
     except ValueError:
         return redirect(url_for('error'))
-    print('successfully returned from method')
-    # try:
-    summary_data = summary_results(results_dataframes, militantnames)
-    # except ValueError:
-    #     return redirect(url_for('error'))
+    try:
+        summary_data = summary_results(results_dataframes, militantnames)
+    except ValueError:
+        return redirect(url_for('error'))
     strength_df = results_dataframes[0]
     ranked_by_strength_df = results_dataframes[1]
     fighting_df = results_dataframes[2]
     defending_df = results_dataframes[3]
+    strength_labels = results_dataframes[4]
+    fighting_labels = results_dataframes[5]
+    defending_labels = results_dataframes[6]
     strongest_militant_name = summary_data[0]
     strongest_militant_strength = summary_data[1]
     fighting_average_change = summary_data[2]
@@ -404,6 +470,6 @@ def results():
     fightingpost = summary_data[6]
     defendingchange = summary_data[7]
 
-    graphing(df)
+    graphing(df, strength_labels, fighting_labels, defending_labels)
 
-    return render_template('results.html', last_updated=dir_last_updated('app/static'), tables=[ranked_by_strength_df.to_html(classes='rankedstrength'), fighting_df.to_html(classes='fighting'), defending_df.to_html(classes='defending')], titles = ['results', 'Militant Strength Before and After Intervention', 'Fighting Between Militant Groups', 'Defending by Communities'], strongestmname = strongest_militant_name, strongestm = strongest_militant_strength, fightingave = fighting_average_change, defendingtot = defending_total_change, fightingchange = fightingchange, fightingpre = fightingpre, fightingpost = fightingpost, defendingchange = defendingchange)
+    return render_template('results.html', last_updated=dir_last_updated('app/static'), table1=ranked_by_strength_df.to_html(classes='rankedstrength'), table2=fighting_df.to_html(classes='fighting'), table3=defending_df.to_html(classes='defending'), strongestmname = strongest_militant_name, strongestm = strongest_militant_strength, fightingave = fighting_average_change, defendingtot = defending_total_change, fightingchange = fightingchange, fightingpre = fightingpre, fightingpost = fightingpost, defendingchange = defendingchange)

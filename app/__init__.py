@@ -11,6 +11,11 @@ import rq
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config.from_object(Config)
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = 'f.jeffreycoker@gmail.com'
+app.config["MAIL_PASSWORD"] = 'Google3!'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 

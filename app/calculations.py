@@ -153,8 +153,13 @@ def calculations(df, militants, communities, militantnames, communitynames):
     DESIRED_INDEX = militants
     strength_df = results_df.iloc[0:,:DESIRED_INDEX]
 
+
     # Ranked militants
     strength_df = strength_df.transpose()
+    strength_labels1 = strength_df.index.values
+    strength_labels = []
+    for i in strength_labels1:
+        strength_labels.append(i+' strength')
     ranked_by_strength_df = strength_df.sort_values(by=['after'], axis=0, ascending=False)
 
     # Creating fighting dataframe
@@ -180,16 +185,17 @@ def calculations(df, militants, communities, militantnames, communitynames):
     elif militants == 10:
         fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 50, 51, 57, 58, 59, 60, 61, 62, 63, 69, 70, 71, 72, 73, 74, 80, 81, 82, 83, 84, 90, 91, 92, 93, 99, 100, 101, 107, 108, 114]]
     elif militants == 11:
-        fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 44, 45, 46, 47, 48, 49, 50, 51, 52, 57, 58, 59, 60, 61, 62, 63, 64, 69, 70, 71, 72, 73, 74, 75, 80, 81, 82, 83, 84, 85, 90, 91, 92, 93, 94, 99, 100, 101, 102, 107, 108, 109, 114, 119]]
+        fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 44, 45, 46, 47, 48, 49, 50, 51, 52, 57, 58, 59, 60, 61, 62, 63, 64, 69, 70, 71, 72, 73, 74, 75, 80, 81, 82, 83, 84, 85, 90, 91, 92, 93, 94, 99, 100, 101, 102, 107, 108, 109, 114, 115, 120]]
     elif militants == 12:
-        fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 57, 58, 59, 60, 61, 62, 63, 64, 65, 69, 70, 71, 72, 73, 74, 75, 76, 80, 81, 82, 83, 84, 85, 86, 90, 91, 92, 93, 94, 95, 99, 100, 101, 102, 103, 107, 108, 109, 110, 114, 115, 119, 120, 124]]
+        fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 57, 58, 59, 60, 61, 62, 63, 64, 65, 69, 70, 71, 72, 73, 74, 75, 76, 80, 81, 82, 83, 84, 85, 86, 90, 91, 92, 93, 94, 95, 99, 100, 101, 102, 103, 107, 108, 109, 110, 114, 115, 116, 120, 121, 125]]
     elif militants == 13:
-        fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 69, 70, 71, 72, 73, 74, 75, 76, 77, 80, 81, 82, 83, 84, 85, 86, 87, 90, 91, 92, 93, 94, 95, 96, 99, 100, 101, 102, 103, 104, 107, 108, 109, 110, 111, 114, 115, 116, 119, 120, 121, 124, 125, 128]]
+        fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 69, 70, 71, 72, 73, 74, 75, 76, 77, 80, 81, 82, 83, 84, 85, 86, 87, 90, 91, 92, 93, 94, 95, 96, 99, 100, 101, 102, 103, 104, 107, 108, 109, 110, 111, 114, 115, 116, 117, 120, 121, 122, 125, 126, 129]]
     elif militants == 14:
-        fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 80, 81, 82, 83, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 96, 97, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 110, 111, 112, 114, 115, 116, 117, 119, 120, 121, 122, 124, 125, 126, 128]]
+        fighting_df = results_df.iloc[0:, [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 80, 81, 82, 83, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 96, 97, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 110, 111, 112, 114, 115, 116, 117, 118, 120, 121, 122, 123, 125, 126, 127, 129, 130, 132]]
     elif militants == 15:
         fighting_df = results_df.iloc[0:, 30:]
     fighting_df = fighting_df.transpose()
+    fighting_labels = fighting_df.index.values
 
     # Creating defending dataframe
     # index between 16 and 29
@@ -226,12 +232,12 @@ def calculations(df, militants, communities, militantnames, communitynames):
     elif communities == 15:
         defending_df = results_df.iloc[0:,15:30]
     defending_df = defending_df.transpose()
-    print('successfully finished method')
-    return(strength_df, ranked_by_strength_df, fighting_df, defending_df)
+    defending_labels = defending_df.index.values
+
+    return(strength_df, ranked_by_strength_df, fighting_df, defending_df, strength_labels, fighting_labels, defending_labels)
 
 
 def summary_results(results_dataframes, militantnames):
-    print('militantnames:', militantnames)
     ranked_by_strength_df = results_dataframes[1]
     fighting_df = results_dataframes[2]
     defending_df = results_dataframes[3]
@@ -246,7 +252,7 @@ def summary_results(results_dataframes, militantnames):
     #         strongest_militant_name = i
     #         x += 1
     strongest_militant_name = ranked_by_strength_df.index[0]
-    if strongest_militant_name == 'government' or 'Government':
+    if strongest_militant_name == 'government' or strongest_militant_name == 'Government':
         strongest_militant_name = 'the government'
     strongest_militant_strength = int(ranked_by_strength_df.iloc[0,1])
     # print('The strongest militant is', strongest_militant_name, 'with a strength of', strongest_militant_strength)

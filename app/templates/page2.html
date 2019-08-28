@@ -4,24 +4,32 @@
 <head>
     <title>Page 2</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <h3>Actor Attributes</h3>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
-            {{ form.regions.label }}<br>
-            {{ form.regions(size=32) }}
+            {{ form.regions.label }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <br>{{ form.regions(size=32) }}
         </p>
          <p>
-            {{ form.communities.label }}<br>
-            {{ form.communities(size=32) }}
+             {{ form.communities.label }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <br>{{ form.communities(size=32) }}
         </p>
         <p>
-            {{ form.militants.label }}<br>
-            {{ form.militants(size=32) }}
+            {{ form.militants.label }}
+            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <br>{{ form.militants(size=32) }}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p><input type=submit class='btn btn-primary btn-lg' value="Continue"></p>
     </form>
 <script>
         var label = document.querySelector('label[for="regions-0"]') !==null;

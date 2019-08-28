@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Contact</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+    <div> Your questions, comments, and feedback on the Conflict Intervention Simulator are greatly appreciated.<br>
+    Please complete the fields in the form below.</div>
+    <h3>Contact Form</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.subject.label }}<br>
+            {{ form.subject }}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.message.label }}<br>
+            {{ form.message }}
+            {% for error in form.message.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p><input type=submit class='btn btn-primary btn-lg' value="Submit"></p>
+    </form>
+{% endblock %}

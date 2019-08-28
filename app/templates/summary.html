@@ -6,38 +6,31 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
   </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <h3>Summary of Data</h3>
-<table>
+        <h3>Summary</h3>
+        <p></p>
+            <b>Regions:</b> {% for region in regionnames %} {{ region }}  {% endfor %}<br>
+            <b>Communities:</b> {% for community in communitynames %} {{ community }}  {% endfor %}<br>
+            <b>Militant Groups:</b> {% for militant in militantnames %} {{ militant }}  {% endfor %}
+    <table class="page">
     <tr>
-        <td style="width: 700px">
-            <h4> Regions:</h4>
-            {% for region in regionnames %}
-            {{ region }}
-            {% endfor %}
-            <h4> Communities:</h4>
-            {% for community in communitynames %}
-            {{ community }}<br>
-            {% endfor %}
-            <h4> Militant Groups:</h4>
-            {% for militant in militantnames %}
-            {{ militant }}<br>
-            {% endfor %}
+        <td style="width: 300px">
+            <h4>Grievances</h4>
+            {{ table1|safe }}
         </td>
         <td>
-            {% for table in tables %}
-            <h4>{{titles[loop.index]}}</h4>
-            {{ table|safe }}
-            <p>
-            {% endfor %}
-            <p>
+            <img id ="network" src = "/static/network.png?u={{ last_updated }}" alt="Community Network" style="width:400px;height:300px;">
+        </td>
+        <td>
+            <h4>Affiliations</h4>
+            {{ table2|safe }}
         </td>
     </tr>
 </table>
-
+        <p></p>
         <h3>Intervention Options</h3>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
-        <div> Provide responses to the two questions below. Spell Militant Group names exactly as listed in the summary above; names are case sensitive. These responses are required.</div>
+        <div> Provide responses to the two questions below. Spell the militant names exactly as listed in the summary above; names are case sensitive. These responses are required.</div>
         <p>
             {{ form.supported_militants.label }}
             {{ form.supported_militants(size=32) }}
@@ -130,6 +123,6 @@
             {{ form.protect.label }}
             {{ form.protect }}
         </p>
-        <p>{{ form.submit() }}</p>
+        <input type=submit class='btn btn-primary btn-lg' value="Initiate the Simulator">
     </form>
 {% endblock %}

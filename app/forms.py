@@ -1,8 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, BooleanField, SubmitField, FieldList, FormField, Label
+from wtforms import StringField, IntegerField, FloatField, BooleanField, SubmitField, FieldList, FormField, Label, TextAreaField, SelectField
 from wtforms.validators import DataRequired, InputRequired, Optional
 
-
+class Contact(FlaskForm):
+    name = StringField('Name:', validators = [DataRequired()])
+    email = StringField('Email:', validators=[DataRequired()])
+    subject = SelectField('Subject:', choices=[('question', 'Ask a Question'), ('feedback', 'Leave Feedback'), ('request', 'Request Information'), ('report', 'Report an Error'), ('message', 'Other')], validators=[DataRequired()])
+    message = TextAreaField('Message:', validators=[DataRequired()], render_kw={"rows": 15, "cols": 100})
+    submit = SubmitField('Submit')
 
 class FirstForm(FlaskForm):
     totalpopulation = IntegerField('Total Population:', validators = [DataRequired()])
@@ -18,7 +23,7 @@ class FirstForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class RegionForm(FlaskForm):
-    regionname = StringField('Region Name', validators=[InputRequired()])
+    regionname = StringField('Region Name:', validators=[InputRequired()])
     regpercent = FloatField('Percent of Total Population:', validators=[InputRequired()])
     weapons = BooleanField('Weapons:', validators=None)
 
@@ -53,7 +58,7 @@ class RegionForm2(FlaskForm):
     def __init__(self, labels=None, **kwargs):
         super().__init__(**kwargs)
         if labels is None:
-            labels = ['percent of the population:']
+            labels = [' ']
         self.x.label = Label(self.x.id, labels[0])
 
 class GrievancesForm(FlaskForm):
@@ -62,8 +67,9 @@ class GrievancesForm(FlaskForm):
     def __init__(self, labels=None, **kwargs):
         super().__init__(**kwargs)
         if labels is None:
-            labels = ['Grievance?:']
+            labels = [' ']
         self.box.label = Label(self.box.id, labels[0])
+
 
 class ExamplesForm(FlaskForm):
     threemil = BooleanField(validators=None)
@@ -83,7 +89,7 @@ class AffiliationsForm(FlaskForm):
     def __init__(self, labels=None, **kwargs):
         super().__init__(**kwargs)
         if labels is None:
-            labels = ['Affiliation?:']
+            labels = [' ']
         self.boxm.label = Label(self.boxm.id, labels[0])
 
 class MilitantForm2(FlaskForm):
@@ -92,7 +98,7 @@ class MilitantForm2(FlaskForm):
     def __init__(self, labels=None, **kwargs):
         super().__init__(**kwargs)
         if labels is None:
-            labels = ['Active?:']
+            labels = [' ']
         self.reg.label = Label(self.reg.id, labels[0])
 
 class ThirdForm(FlaskForm):
@@ -141,7 +147,7 @@ class FourthForm(FlaskForm):
     def __init__(self, labels=None, **kwargs):
         super().__init__(**kwargs)
         if labels is None:
-            labels = ['1. List the names of the militants that the intervention supports, separated by a comma:', '2. List the names of the militants that the intervention opposes, separated by a comma:', 'Negotiate between all communities:', 'Negotiate between two militant groups:', 'First Militant:', 'Second Militant:', 'Wage information campaign:', 'Support militant governance:', 'Increase civilian wealth:', 'List regions separated by a comma:', 'List communities separated by a comma:', 'Provide community leaders with benefits:', 'Provide militants with benefits to pass to civilians:', 'Provide civilians with conditional benefits:', 'Fund supported militants:', 'Amount of funding:', 'Cut off resources from opposed militants:', 'Percent of resources to cut off (decimal form):', 'Attack opposed militants:', 'Punish support of opposed militants:', 'Remove available weapons:', 'List regions separated by a comma:', 'Provide training and equipment to supported militants:', 'Protect civilians from opposed militants:']
+            labels = ['1. List the names of any militants that the intervention supports, separated by a comma:', '2. List the names of any militants that the intervention opposes, separated by a comma:', 'Negotiate between all communities:', 'Negotiate between two militant groups:', 'First Militant:', 'Second Militant:', 'Wage information campaign:', 'Support militant governance:', 'Increase civilian wealth:', 'List regions separated by a comma:', 'List communities separated by a comma:', 'Provide community leaders with benefits:', 'Provide militants with benefits to pass to civilians:', 'Provide civilians with conditional benefits:', 'Fund supported militants:', 'Amount of funding:', 'Cut off resources from opposed militants:', 'Percent of resources to cut off (decimal form):', 'Attack opposed militants:', 'Punish support of opposed militants:', 'Remove available weapons:', 'List regions separated by a comma:', 'Provide training and equipment to supported militants:', 'Protect civilians from opposed militants:']
         self['supported_militants'].label = Label(self['supported_militants'].id, labels[0])
         self['opposed_militants'].label = Label(self['opposed_militants'].id, labels[1])
         self['negotiate'].label = Label(self['negotiate'].id, labels[2])
