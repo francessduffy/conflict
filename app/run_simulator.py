@@ -2,10 +2,11 @@ from redis import Redis
 from pandas import DataFrame
 import rq
 
+
 def simulator():
     sims = 5
     print('Initiating Simulations...')
-    subqueue = rq.Queue('simulator', connection=Redis.from_url('redis://'))
+    subqueue = rq.Queue('simulator', connection=Redis.from_url('redis://ec2-3-95-206-118.compute-1.amazonaws.com:6379'))
     job = subqueue.enqueue('app.tasks.simulator_instance')
     finished = False
     while finished == False:

@@ -10,27 +10,99 @@
       $('[data-toggle="tooltip"]').tooltip();
     });
     </script>
+    <style>
+
+    </style>
 </head>
+<div class="indented">
     <h3>Actor Attributes</h3>
+    Please complete all of the fields below. Ensure that the names given for each region, community, and militant are different from one another. <p></p>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
+
         <p>
             {{ form.regions.label }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
-            <br>{{ form.regions(size=32) }}
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="For each region provide name and the percent of the total civilian population that lives in that region, in decimal form. The total percent across all regions should sum to 1. If there is only one region, percent = 1. Check the box if civilians in this region can freely obtain weapons" data-placement="right" alt="Help">
+            {% for field in form.regions %}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        {% for i in field.errors.get('regpercent') %}
+                            <br>
+                            <div class="inner">
+                            {{ field.label }}
+                            {{ field(size=32) }}
+                            <span style="color: red;">[{{ i }}]</span><br>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <br>
+                    <div class="inner">
+                    {{ field.label }}
+                    {{ field(size=32) }}
+                    </div>
+                    {% endif %}
+            {% endfor %}
         </p>
+
          <p>
-             {{ form.communities.label }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
-            <br>{{ form.communities(size=32) }}
+            {{ form.communities.label }}
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="For each community provide name and the percent of civilians who are Low (L), Medium (M), or High (H) income, in decimal form. Their sum should equal 1. An example percent distribution for an impoverished community is .7-.28-.02. An example percent distribution for a moderate income community is .1-.84-.06" data-placement="right" alt="Help">
+                {% if form.communities.errors %}
+                    {% for field in form.communities %}
+                        {{ field.label }}
+                        {{ field(size=32) }}<br>
+                        {% if 'l' in field.errors %}
+                            <span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{ field.errors.get('l')[0] }}]</span><br><br>
+                        {% elif 'm' in field.errors %}
+                            <span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{ field.errors.get('m')[0] }}]</span><br><br>
+                        {% elif 'h' in field.errors %}
+                            <span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{ field.errors.get('h')[0] }}]</span><br><br>
+                            {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for field in form.communities %}
+                        <br>
+                        <div class="inner">
+                        {{ field.label }}
+                        {{ field(size=32) }}
+                        </div>
+                    {% endfor %}
+                    {% endif %}
         </p>
         <p>
             {{ form.militants.label }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
-            <br>{{ form.militants(size=32) }}
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="External income is a relative value representing foreign aid or natural resources; example values range from 0 to 3000. Initial strength takes similar values. Benefit threshold defines when a militant stops giving civilians benefits. It ranges from 1 - 10 with increasing benevolence; default = 4. Check the box if the militant violently or indiscriminately attacks civilians" data-placement="right" alt="Help">
+                {% if form.militants.errors %}
+                    {% for field in form.militants %}
+                        {{ field.label }}
+                        {{ field(size=32) }}<br>
+                        {% if 'extincome' in field.errors %}
+                            <span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{ field.errors.get('extincome')[0] }}]</span><br><br>
+                        {% endif %}
+                        {% if 'initstrenth' in field.errors %}
+                            <span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{ field.errors.get('initstrength')[0] }}]</span><br><br>
+                        {% endif %}
+                        {% if 'benefitcutoff' in field.errors %}
+                            <span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{ field.errors.get('benefitcutoff')[0] }}]</span><br><br>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for field in form.militants %}
+                        <br>
+                        <div class="inner">
+                        {{ field.label }}
+                        {{ field(size=32) }}
+                        </div>
+                    {% endfor %}
+                    {% endif %}
         </p>
         <p><input type=submit class='btn btn-primary btn-lg' value="Continue"></p>
     </form>
+</div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
 <script>
         var label = document.querySelector('label[for="regions-0"]') !==null;
         if (label) {

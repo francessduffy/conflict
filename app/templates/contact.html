@@ -5,8 +5,8 @@
     <title>Contact</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
 </head>
-    <div> Your questions, comments, and feedback on the Conflict Intervention Simulator are greatly appreciated.<br>
-    Please complete the fields in the form below.</div>
+    <div class="indented"> Your questions, comments, and feedback on the Conflict Intervention Simulator are greatly appreciated.<br>
+    Please complete the fields in the form below.
     <h3>Contact Form</h3>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
@@ -40,4 +40,8 @@
         </p>
         <p><input type=submit class='btn btn-primary btn-lg' value="Submit"></p>
     </form>
+    </div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
 {% endblock %}

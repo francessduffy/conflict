@@ -11,16 +11,17 @@
     });
     </script>
 </head>
-    <div> To begin, start by completing the form below. You will be directed to three additional forms before initiating the
-    simulator.<br>
-    If you need help, hover over the <img id ="question" src = "/static/question.png" style="width:15px;height:15px;" alt="Help"> beside each field for additional guidance.</div>
-    <h3>Properties of the Conflict Environment</h3>
+    <div class="subindented"> To begin, start by completing the form below. You will be directed to three additional forms before initiating the
+        simulator.<br>
+        If you need help, hover over the <img src = "/static/question.png" class="fixed" style="width:15px;height:15px;" alt="Help"> beside each field for additional guidance.</div>
+    <div class="indented">
+    <h4>Properties of the Conflict Environment</h4>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
             {{ form.totalpopulation.label }}<br>
             {{ form.totalpopulation(size=32) }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="default = 300000" data-placement="right" alt="Help">
             {% for error in form.totalpopulation.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -28,7 +29,7 @@
         <p>
             {{ form.numberregions.label }}<br>
             {{ form.numberregions(size=32) }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="If all militant groups in the conflict can approach all civilians, simplify to default regions = 1. Include more regions for greater complexity" data-placement="right" alt="Help">
             {% for error in form.numberregions.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -36,7 +37,7 @@
         <p>
             {{ form.numbercommunities.label }}<br>
             {{ form.numbercommunities(size=32) }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Number of groups such as tribes, clans, factions, villages, etc involved in the conflict environment" data-placement="right" alt="Help">
             {% for error in form.numbercommunities.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -44,7 +45,7 @@
         <p>
             {{ form.numbermilitants.label }}<br>
             {{ form.numbermilitants(size=32) }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Number of militant groups involved in the conflict" data-placement="right" alt="Help">
             {% for error in form.numbermilitants.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -63,7 +64,7 @@
             {% endfor %}
             {{ form.h.label }}
             {{ form.h(size=8) }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Relative wealth values for Low income (L), Medium income (M), and High income (H) civilians. Default values L: 20, M: 100, H: 500" data-placement="right" alt="Help">
             {% for error in form.h.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -71,7 +72,7 @@
         <p>
             {{ form.extortionrate.label }}<br>
             {{ form.extortionrate(size=32) }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Percent of civilian income that militants may extort, in decimal form. Default = .1" data-placement="right" alt="Help">
             {% for error in form.extortionrate.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -79,7 +80,7 @@
         <p>
             {{ form.civsupportrate.label }}<br>
             {{ form.civsupportrate(size=32) }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Percent of civilian income that civilians may give in support of militants, in decimal form. Default = .1" data-placement="right" alt="Help">
             {% for error in form.civsupportrate.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -87,11 +88,15 @@
         <p>
             {{ form.terrorfactor.label }}<br>
             {{ form.terrorfactor(size=32) }}
-            <img id ="question" src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Hooray" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Decimal value between 0 and 1. Increases as terrorism brutality increases. Default = .8" data-placement="right" alt="Help">
             {% for error in form.terrorfactor.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p><input type=submit class='btn btn-primary btn-lg' value="Continue"></p>
+        </p><br>
+        <input type=submit class='btn btn-primary btn-lg' value="Continue">
     </form>
+    </div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
 {% endblock %}

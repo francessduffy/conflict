@@ -5,8 +5,34 @@
     <title>Details</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
 </head>
-        <h3>Explaining the Model</h3>
+<div class="indented" style="width: 70%">
+        <h3>Explaining the Model</h3><br>
         <p>
-        This is an explanation of the theory behind the simulator.
-        </p>
+        <p>The Conflict Intervention Simulator allows users to simulate the effects of different types of intervention on violence in civil war. It works by modeling the local dynamics of a conflict, such as grievances between communities or militants' behavior towards civilians. It then simulates the introduction of an intervention, such as greater funding provided to a militant group, or negotiations between feuding communities. </p>
+
+<p>Users can choose between fifteen different intervention tools or create combined strategies in order to experiment with their effects. Users may then observe how these tools and strategies may lead to unexpected outcomes, or to greater rather than reduced fighting and militarization. This Simulator demonstrates that while external interventions may have promising intentions, they may worsen conflict if they do not account for complex local dynamics. </p>
+
+<p>The Simulator uses an Agent-Based Model (ABM) to represent how militant groups interact with civilians during a civil war. An ABM uses computation to capture the interactions between many individual “agents” in order to simulate an overall collective behavior. In this case, the Simulator models interactions between a few militant groups and many civilians, who may live across a number of different regions. </p>
+
+<p>In the model, fighting groups may increase their strength by extorting local populations or winning their support. They may also punish civilians who support other groups. In response, civilian communities can support different militant groups depending on their local interests. They may also switch sides based on any benefits they receive or in response to punishment. Below is a visual representation of the modeled interactions between militants and civilians. </p>
+
+    <p><img src="/static/abmdiagram.png" style="width:500px" alt="ABM Diagram"></p>
+
+<p>The model also accounts for grievances that different civilian communities, such as tribes, clans, religious communities, or villages, may have towards one another. These could include disputes over land or water, or resentment towards disproportionate wealth or political power. When communities have local disputes, they may be more likely to form alliances with militant groups. Further, civilian communities may have pre-existing affiliations with fighting groups that predispose them to provide support. The result is a network of complex grievances and affiliations between local communities that ultimately impacts the resources and capabilities of civil war actors. </p>
+
+<p>As its final output, the Simulator produces graphs of the relative strength between militants, their probability of fighting one another, and the level of civilian defending, both before and after a foreign intervention. The probability of fighting is represented as the similarity in strength of two militants who inhabit the same region. The closer they are in strength, the more likely they may be to contest one another’s authority. Civilian defending is the frequency that civilians, with enough resources and access to weapons, defend themselves against enemy militant groups. This militarization of local communities is another indicator of violence and instability. </p>
+
+<p>When a user introduces an intervention to the conflict environment, the Simulator represents that intervention as a change to the parameters in the conflict environment. Militant and civilian behavior may then shift to produce new dynamics between the conflict actors. These shifts may be seen in changes to the equilibrium values of the graphs. Or, interventions may lead to little or no change despite user expectations. </p>
+
+    <p>More details about the Agent-Based Model, a review of the theoretical literature supporting the model interactions, and specifics about the rules and parameters altered by the interventions will be made available in a forthcoming paper. To request more information, <a href="{{ url_for('contact') }}"><b>complete a contact form here</b></a>.</p>
+
+<br><p>This research project, the model, and the theoretical motivation builds upon previous work performed in the below publication: </p>
+
+<p>Duffy, Frances, Kamil Klosik, Luis Gustavo Nardin, and Gerd Wagner. forthcoming. "Rebel Group Protection Rackets: Simulating the<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Economy of Civil War Violence." In <i>Computational Conflict Research.</i> </p>
+
+
+</div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
 {% endblock %}

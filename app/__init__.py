@@ -4,7 +4,6 @@ from redis import Redis
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-import matplotlib
 import rq
 
 
@@ -14,8 +13,8 @@ app.config.from_object(Config)
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = 'f.jeffreycoker@gmail.com'
-app.config["MAIL_PASSWORD"] = 'Google3!'
+app.config["MAIL_USERNAME"] = 'interventionsimulator@gmail.com'
+app.config["MAIL_PASSWORD"] = 'conflict123'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -26,3 +25,4 @@ app.redis = Redis.from_url(app.config['REDIS_URL'])
 app.task_queue = rq.Queue('simulator', connection=app.redis)
 app.task_queue = rq.Queue('full_simulator', connection=app.redis)
 bootstrap = Bootstrap(app)
+

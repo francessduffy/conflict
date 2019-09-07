@@ -1,6 +1,77 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, FloatField, BooleanField, SubmitField, FieldList, FormField, Label, TextAreaField, SelectField
-from wtforms.validators import DataRequired, InputRequired, Optional
+from wtforms.validators import DataRequired, InputRequired, Optional, ValidationError
+
+def percentage_check(form, field):
+    try:
+        if field.data > 1:
+            raise ValidationError('Field must be in decimal form')
+        if field.data < 0:
+            raise ValidationError('Field must be a positive decimal')
+    except TypeError:
+        raise ValidationError('Field must be a decimal value between 0 - 1')
+
+def percentage_check2(form, field):
+    try:
+        if field.data > 1:
+            raise ValidationError('Percent field must be in decimal form')
+        if field.data < 0:
+            raise ValidationError('Percent field must be a positive decimal')
+    except TypeError:
+        raise ValidationError('Percent field must be a decimal value between 0 - 1')
+
+def percentage_check3(form, field):
+    try:
+        if field.data > 1:
+            raise ValidationError('Percent fields must be in decimal form')
+        if field.data < 0:
+            raise ValidationError('Percent fields must be a positive decimal')
+    except TypeError:
+        raise ValidationError('Percent fields must be a decimal value between 0 - 1')
+
+def benefit_check(form, field):
+    try:
+        if field.data < 1 or field.data > 10:
+            raise ValidationError('Benefit threshold must be an integer from 1 to 10')
+    except TypeError:
+        raise ValidationError('Benefit threshold must be an integer from 1 to 10')
+
+def extincome_check(form, field):
+    try:
+        if field.data > 0 and field.data < 1:
+            raise ValidationError('External Income must be an integer of 0 or greater')
+        elif field.data < 0:
+            raise ValidationError('External Income must be an integer of 0 or greater')
+    except TypeError:
+        raise ValidationError('External Income must be an integer of 0 or greater')
+
+def initstrength_check(form, field):
+    try:
+        if field.data > 0 and field.data < 1 or field.data < 0:
+            raise ValidationError('Initial Strength must be an integer of 0 or greater')
+    except TypeError:
+        raise ValidationError('Initial Strength must be an integer of 0 or greater')
+
+def integer_check(form, field):
+    try:
+        if field.data < 1:
+            raise ValidationError('Must be an integer of 1 or greater')
+    except TypeError:
+        raise ValidationError('Must be an integer of 1 or greater')
+
+def integer2_check(form, field):
+    try:
+        if field.data < 2:
+            raise ValidationError('Must be an integer of 2 or greater')
+    except TypeError:
+        raise ValidationError('Must be an integer of 2 or greater')
+
+def integer3_check(form, field):
+    try:
+        if field.data < 100:
+            raise ValidationError('Recommended integer greater than 100')
+    except TypeError:
+        raise ValidationError('Must be an integer of 100 or greater')
 
 class Contact(FlaskForm):
     name = StringField('Name:', validators = [DataRequired()])
@@ -10,35 +81,35 @@ class Contact(FlaskForm):
     submit = SubmitField('Submit')
 
 class FirstForm(FlaskForm):
-    totalpopulation = IntegerField('Total Population:', validators = [DataRequired()])
-    numberregions = IntegerField('Number of Regions:', validators=[DataRequired()])
-    numbercommunities = IntegerField('Number of Communities:', validators=[DataRequired()])
-    numbermilitants = IntegerField('Number of Militants:', validators=[DataRequired()])
-    l = IntegerField('L:', validators = [DataRequired()])
-    m = IntegerField('M:', validators = [DataRequired()])
-    h = IntegerField('H:', validators = [DataRequired()])
-    extortionrate = FloatField('Percent Extortion Rate:', validators = [DataRequired()])
-    civsupportrate = FloatField('Civilian Support Rate:', validators=[DataRequired()])
-    terrorfactor = FloatField('Terrorism Factor:', validators=[DataRequired()])
+    totalpopulation = IntegerField('Total Population:', validators = [InputRequired(), integer3_check])
+    numberregions = IntegerField('Number of Regions:', validators=[InputRequired(), integer_check])
+    numbercommunities = IntegerField('Number of Communities:', validators=[InputRequired(), integer_check])
+    numbermilitants = IntegerField('Number of Militants:', validators=[InputRequired(), integer2_check])
+    l = IntegerField('L:', validators = [InputRequired(), integer_check])
+    m = IntegerField('M:', validators = [InputRequired(), integer_check])
+    h = IntegerField('H:', validators = [InputRequired(), integer_check])
+    extortionrate = FloatField('Percent Extortion Rate:', validators = [DataRequired(), percentage_check])
+    civsupportrate = FloatField('Percent Civilian Support Rate:', validators=[DataRequired(), percentage_check])
+    terrorfactor = FloatField('Terrorism Factor:', validators=[DataRequired(), percentage_check])
     submit = SubmitField('Submit')
 
 class RegionForm(FlaskForm):
-    regionname = StringField('Region Name:', validators=[InputRequired()])
-    regpercent = FloatField('Percent of Total Population:', validators=[InputRequired()])
-    weapons = BooleanField('Weapons:', validators=None)
+    regionname = StringField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Region Name:', validators=[InputRequired()])
+    regpercent = FloatField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Percent of Total Population: &nbsp;', validators=[InputRequired(), percentage_check2])
+    weapons = BooleanField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weapons?', validators=None)
 
 class CommunityForm(FlaskForm):
-    communityname = StringField('Community Name', validators=[InputRequired()])
-    l = FloatField('% L:', validators=[InputRequired()])
-    m = FloatField('% M:', validators=[InputRequired()])
-    h = FloatField('% H:', validators=[InputRequired()])
+    communityname = StringField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Community Name: &nbsp;', validators=[DataRequired()])
+    l = FloatField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % L:', validators=[DataRequired(), percentage_check3])
+    m = FloatField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % M:', validators=[DataRequired(), percentage_check3])
+    h = FloatField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % H:', validators=[DataRequired(), percentage_check3])
 
 class MilitantForm(FlaskForm):
-    militantname = StringField('Militant Name', validators=[InputRequired()])
-    extincome = IntegerField('External Income:', validators=[InputRequired()])
-    initstrength = IntegerField('Initial Strength:', validators=[InputRequired()])
-    benefitcutoff = IntegerField('Benefit Threshold:', validators=[InputRequired()])
-    terrorist = BooleanField('Terrorist?:', validators=None)
+    militantname = StringField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Militant Name:', validators=[DataRequired()])
+    extincome = IntegerField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; External Income:', validators=[InputRequired(), extincome_check])
+    initstrength = IntegerField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Initial Strength:', validators=[InputRequired(), initstrength_check])
+    benefitcutoff = IntegerField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Benefit Threshold: &nbsp;', validators=[benefit_check, InputRequired()])
+    terrorist = BooleanField('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terrorist?', validators=None)
 
 class SecondForm(FlaskForm):
     regions = FieldList(FormField(RegionForm))
@@ -53,7 +124,7 @@ def get_labels(labels=None):
         return labels
 
 class RegionForm2(FlaskForm):
-    x = FloatField(validators=[InputRequired()])
+    x = FloatField(validators=[InputRequired(), percentage_check])
 
     def __init__(self, labels=None, **kwargs):
         super().__init__(**kwargs)
@@ -133,9 +204,9 @@ class FourthForm(FlaskForm):
     milbenefits = BooleanField(validators=None)
     civbenefits = BooleanField(validators=None)
     fundmil = BooleanField(validators=None)
-    fundmilamt = FloatField(validators=[Optional()])
+    fundmilamt = IntegerField(validators=[Optional(), extincome_check])
     cutoff = BooleanField(validators=None)
-    cutoffamt = FloatField(validators=[Optional()])
+    cutoffamt = FloatField(validators=[Optional(), percentage_check])
     attack = BooleanField(validators=None)
     punish = BooleanField(validators=None)
     weapons = BooleanField(validators=None)
@@ -147,7 +218,7 @@ class FourthForm(FlaskForm):
     def __init__(self, labels=None, **kwargs):
         super().__init__(**kwargs)
         if labels is None:
-            labels = ['1. List the names of any militants that the intervention supports, separated by a comma:', '2. List the names of any militants that the intervention opposes, separated by a comma:', 'Negotiate between all communities:', 'Negotiate between two militant groups:', 'First Militant:', 'Second Militant:', 'Wage information campaign:', 'Support militant governance:', 'Increase civilian wealth:', 'List regions separated by a comma:', 'List communities separated by a comma:', 'Provide community leaders with benefits:', 'Provide militants with benefits to pass to civilians:', 'Provide civilians with conditional benefits:', 'Fund supported militants:', 'Amount of funding:', 'Cut off resources from opposed militants:', 'Percent of resources to cut off (decimal form):', 'Attack opposed militants:', 'Punish support of opposed militants:', 'Remove available weapons:', 'List regions separated by a comma:', 'Provide training and equipment to supported militants:', 'Protect civilians from opposed militants:']
+            labels = ['1. List the names of any militants that the intervention supports, separated by a comma:', '2. List the names of any militants that the intervention opposes, separated by a comma:', 'Negotiate disputes between all communities:', 'Negotiate between two militant groups:', 'First Militant:', 'Second Militant:', 'Wage information campaign:', 'Support militant governance:', 'Increase civilian wealth:', 'List regions separated by a comma:', 'List communities separated by a comma:', 'Provide community leaders with benefits:', 'Provide militants with benefits to pass to civilians:', 'Provide civilians with benefits conditional on ceasing militant support:', 'Fund supported militants:', 'Amount of funding:', 'Cut off resources from opposed militants:', 'Percent of resources to cut off (decimal form):', 'Attack opposed militants:', 'Punish civilian support of opposed militants:', 'Remove available weapons:', 'List regions separated by a comma:', 'Provide training and equipment to supported militants:', 'Protect civilians from opposed militants:']
         self['supported_militants'].label = Label(self['supported_militants'].id, labels[0])
         self['opposed_militants'].label = Label(self['opposed_militants'].id, labels[1])
         self['negotiate'].label = Label(self['negotiate'].id, labels[2])

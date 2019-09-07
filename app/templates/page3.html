@@ -17,32 +17,64 @@
         myVar = myFunc({ vars:tojson })
      </script>
 </head>
-
+<div class="indented">
     <h3>Additional Attributes</h3>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
             {{ form.regionpercent.label }}
             <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Provide the percentage of the given region's population that identifies with each community, in decimal form. The sum of percentages for each region should equal 1" data-placement="right" alt="Help">
-            <br>{{ form.regionpercent(size=32) }}
+                <div class="inner">
+                {% if form.regionpercent.errors %}
+                    {% for field in form.regionpercent %}
+                        {{ field.label }}
+                        {{ field(size=32) }}<br>
+                        {% if 'x' in field.errors %}
+                            <span style="color: red;">[{{ field.errors.get('x')[0] }}]</span><br><br>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for field in form.regionpercent %}
+                        <br>
+                        {{ field.label }}
+                        {{ field(size=32) }}
+                    {% endfor %}
+                    {% endif %}
+                </div>
         </p>
         <p>
             {{ form.grievances.label }}
             <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Check the box if the first community has a grievance against the second community" data-placement="right" alt="Help">
+            <br> Select all that apply
             <br>{{ form.grievances(size=32) }}
+            {% for error in form.grievances.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.affiliations.label }}
             <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Check the box if the community has an affiliation with the stated militant" data-placement="right" alt="Help">
+            <br> Select all that apply
             <br>{{ form.affiliations(size=32) }}
+            {% for error in form.affiliations.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.milactive.label }}
-            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Check the box if the militant is active or seeking power in the stated region" data-placement="right" alt="Help">
+            <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Check the box if the militant is active or seeking power in the stated region. If there is only one region, all militants should be selected" data-placement="right" alt="Help">
+            <br>If only one region, for best results select all militants as active
             <br>{{ form.milactive(size=32) }}
+            {% for error in form.milactive.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p><input type=submit class='btn btn-primary btn-lg' value="Continue"></p>
     </form>
+</div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
 <script>
     var label = document.querySelector('label[for="regionpercent-0"]') !==null;
     if (label) {

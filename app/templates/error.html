@@ -5,11 +5,19 @@
     <title>Error</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
 </head>
+<div class="subindented">
         <h3>Error</h3>
         <p>
-        <div style="width: 60%">Unfortunately the simulator has encountered an error. This may be caused by an internal
-        problem, or there may be an error in the parameters that you have provided. Try running the simulator again, and
-        ensure that all of the necessary fields are complete and in the correct format.
+        <div style="width: 50%">Unfortunately the simulator has encountered an error. This may be caused by an internal
+        problem, or there may be an error in the parameters that you have provided. Click the restart button below to try
+            running the simulator again, and ensure that all of the necessary fields are complete and in the correct format.
+            If the problem persists, please <a href="{{ url_for('contact') }}">contact the administrator</a>.<br>
+        <p></p>
+        <a href="{{ url_for('restart') }}"><button type="button" class="btn btn-primary btn-lg"><b>Restart</b></button></a>
         </div>
         </p>
+</div>
+    <div class="footer2">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
 {% endblock %}

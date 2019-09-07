@@ -1,6 +1,10 @@
-<html>
+{% extends 'bootstrap/base.html' %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+
+{% block content %}
         <head>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+                <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
             <script>
               $(document).ready(function() {
                 var refresh_id = setInterval(function() {
@@ -18,9 +22,16 @@
             </script>
         </head>
         <body>
-        <h2>Model simulations in progress</h2>
-        <img class="col-sm-3 col-sm-offset-4" src="{{ url_for('static', filename='smallballs.svg') }}" ng-show="loading">
+        <div class="subindented">
+        <h3>Model simulations in progress</h3>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="{{ url_for('static', filename='smallballs.svg') }}" ng-show="loading" alt="Loading">
         <h4>Please be patient; this process may take between 2 - 4 minutes to complete.</h4>
         You may continue to use the internet in other browser windows, but do not navigate away from this page.
+        <p></p>
+        If you would like to cancel the simulation and start over, please click the restart button below.<br>
+        <p></p>
+        <a href="{{ url_for('restart') }}"><button type="button" class="btn btn-primary btn-lg"><b>Restart</b></button></a>
+        </div>
         </body>
-</html>
+{% endblock %}

@@ -5,13 +5,15 @@
     <title>Examples</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
 </head>
+<div class="indented">
         <h3>Example Options</h3>
             <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
                 <h5>Choose <b>one</b> of the following conflict examples for simulation:</h5>
         <p>
             {{ form.threemil.label }}
-            {{ form.threemil }}
+            {{ form.threemil }}<br>
+            <i>Three militants: government, rebels, and terrorists; five tribes</i>
         </p>
         <div style="width: 40%">In this example, the government, a rebel group, and a small terrorist organization are fighting
         in one region where there are five different tribes. Two powerful and relatively rich tribes have grievances against
@@ -23,7 +25,8 @@
             current regime. Weapons are widely available in this region.</div><br><p></p>
         <p>
             {{ form.twomil.label }}
-            {{ form.twomil }}
+            {{ form.twomil }}<br>
+            <i>Two militants: government versus insurgents; two ethnic groups</i>
         </p>
         <div style="width: 40%">In this example, the government is fighting against an insurgency in a
             small country with two major ethnic groups. The minority group only comprises 20% of the population, but its citizens
@@ -34,4 +37,8 @@
             twice as much from external sympathizers. Weapons are readily available to the public.</div><br><p></p>
         <p><input type=submit class='btn btn-primary btn-lg' value="Continue"></p>
     </form>
+</div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
 {% endblock %}

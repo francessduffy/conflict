@@ -5,8 +5,36 @@
     <title>Instructions</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
 </head>
+<div class="indented" style="width: 70%">
         <h3>Instructions for Using the Simulator</h3>
         <p>
-        These are the instructions for using the simulator.
+        <p>The Conflict Intervention Simulator requires several specific details about a conflict environment in order to get started. To begin providing this information, click on the Start Simulator link and follow the instructions. You may either choose to run an existing example, in which all of the parameters are already created for you, or you may choose to enter the parameters manually. </p>
+
+<p>If you want to run an existing example, click the “Use Examples” button and follow the prompt to choose a conflict. </p>
+
+<p>If you choose to enter the values manually, be prepared to provide detailed demographic information about the conflict environment over a series of three forms. This information includes the total population, the numbers of regions, communities, and militants, the percent of the population that lives in each region, the percent of the population of each region that identifies with each community, and whether or not weapons are available to civilians in this environment. You will be asked to provide relative income values for people of low, medium, and high income, and the proportions of each community that fall under each income level. </p>
+
+<p>You will also be asked to provide details such as the percent that militants extort from civilian income, the percent that civilians provide to militants in support, a “factor” describing the intensity of terrorist activity, and the external income, initial strength, and threshold for providing benefits of each militant. You will also designate whether or not any of the militants are terrorists. Lastly, you will indicate which communities have grievances against one another and with which militants they are affiliated. </p>
+
+<p>At this time, you may choose to simulate a maximum of fifteen regions, fifteen communities, and fifteen militant groups. However, the forms may experience some complications with numbers greater than five regions, eight communities, and eight militants. The simulator will still execute, but please <a href="{{ url_for('contact') }}"><b>contact the administrator</b></a> if you have trouble running simulations with larger numbers of actors. </p>
+
+<p>If this sounds like a lot of complex information, don’t worry! There are question mark icons along the way to provide you with the required format of some parameters and suggested default values for others. If you require additional assistance, please <a href="{{ url_for('contact') }}"><b> fill out a contact form</b></a>. </p>
+
+<p>After either selecting an existing example case or entering parameters manually, you will then be taken to a “Summary” page that displays your list of region, community, and militant names in the conflict. It also displays a network diagram and charts of the grievances between communities and their affiliations with militants. </p>
+
+<p>You must then provide information about the intervention that you would like to implement. Type in the names of the militants that the intervention supports and opposes in the required fields, copying them exactly as shown in the summary. Then, select which intervention tools you would like to implement and provide additional information as necessary. </p>
+
+<p>Finally, click on the “Initiate Simulation” button at the bottom of the Intervention Form. The Simulator may take several minutes to run as it executes multiple interactions between each militant group and each civilian. Depending on the demographic information that you provide, the model will simplify the overall population to a representative proportion such that the total number of civilians ranges from 300 to 500. The model currently performs 234 “rounds” in which militants repeatedly interact with each civilian. You may work in another browser window, but do not navigate away from the processing page. </p>
+
+<p>When the simulation is complete, it will display a page summarizing the results. You will see which militant group emerges the strongest following the intervention, any changes in percent likelihood of fighting, and percent changes in the incidence of civilian defending. You can also click on the tabs to view three different graphs of strength, violence, and defending outcomes before and after the intervention. The trend from 0 to 182 rounds on the x-axis represents pre-intervention patterns, while 182 to 234 rounds represents post-intervention. </p>
+
+<p>The values provided for strength are meant to be relative values that simply demonstrate comparative changes between militants in response to the intervention, and they cannot be compared between multiple simulations. Further, the model run in this online demonstration does not have the statistical power to produce statistically significant results. This is due to the length of time and processing power required to run the robust simulator. For information about the fully robust model, please <a href="{{ url_for('contact') }}"><b>contact the administrator</b></a>.</p>
+
+<p> Ultimately, the Simulator is meant as a supplementary tool to visualize possible unexpected changes in violence and instability that may stem from micro-level responses to different forms of foreign intervention. It is dependent on the accuracy of the parameters that are provided, and these values can be difficult to measure and may change frequently and unexpectedly during a conflict. Proper interpretation of the results is dependent on human intuition and recognition of the limitations of computation for understanding social phenomena, as well as a sense of how important the micro-level interactions captured in this model are as compared to more macro-level causes for conflict. </p>
+
         </p>
+</div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
 {% endblock %}
