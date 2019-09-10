@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <head>
+    <title>Results</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+    $(function() {
+      $('.graph1').click(function(e){
+          e.preventDefault();
+        $("#graph").attr('src',"/static/graph1.png?u={{ last_updated }}");
+      });
+      $('.graph2').click(function(e){
+          e.preventDefault();
+        $("#graph").attr('src',"/static/graph2.png?u={{ last_updated }}");
+      });
+      $('.graph3').click(function(e){
+          e.preventDefault();
+        $("#graph").attr('src',"/static/graph3.png?u={{ last_updated }}");
+      });
+    });
+    </script>
+
+
+<body>
+<div class="indented">
+<h3>Results</h3>
+<h5><b>The strongest militant following the intervention is {{ strongestmname }}, with a final strength of {{ strongestm }}.</b></h5>
+<h5><b>The average probability of fighting between militants has {{ fightingchange }}{{ fightingave }} from {{ fightingpre }} to {{ fightingpost }}.</b></h5>
+<h5><b>The amount of community defending has {{ defendingchange }}{{ defendingtot }}.</b></h5>
+
+    <table class="page">
+        <tr>
+        <td style="width: 45%">
+            <h4>Militant Strength Before and After Intervention</h4>
+            <h5><i>Ranked from strongest to weakest post-intervention</i> </h5>
+                {{ table1|safe }}<br>
+            <h4>Fighting Between Militant Groups</h4>
+                {{ table2|safe }}<br>
+            <h4>Defending by Communities</h4>
+                {{ table3|safe }}<br>
+        </td>
+    <td>
+        <div style="text-align: center">
+            <a href="" title="Switch" class="graph1"><button type="button" class="btn btn-primary btn-sm"><b>Militant Strength</b></button></a>
+            <a href="" title="Switch" class="graph2"><button type="button" class="btn btn-primary btn-sm"><b>Militant Fighting</b></button></a>
+            <a href="" title="Switch" class="graph3"><button type="button" class="btn btn-primary btn-sm"><b>Community Defending</b></button></a>
+        </div>
+        <figure>
+            <img id ="graph" src = "/static/graph1.png?u={{ last_updated }}">
+        </figure>
+    </td>
+        </tr>
+        </table>
+</div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
+</body>
+{% endblock %}

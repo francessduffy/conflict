@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Home</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+</head>
+<div class="subindented" style="width: 70%">
+        <h2>Conflict Intervention Simulator</h2>
+        <h5><p>Why does foreign intervention in civil wars often lead to increased or continued conflict violence? Countless scholars and practitioners have tackled this question, producing theories and lessons learned for why outside involvement has failed to end fighting. This issue is a pressing problem for current U.S. foreign policy practice, as despite their best efforts, the United States and its international partners have failed to bring violence to an end in such countries as Afghanistan, Somalia, and Libya.</p>
+    <p>Part of the problem may stem from a lack of understanding for how conflicts unfold at a local level. Different intervention strategies may create incentives for civilians, who have their own competing interests and grievances, to switch sides and provide support to different conflict actors in ways that foreign interveners may not anticipate. This can lead to exacerbated violence and instability.</p>
+            <p>This Simulator draws upon multiple theories from the fields of political science and foreign policy to model local-level interactions between civilians and militant groups engaged in conflict. It demonstrates how militant strength, fighting, and civilian defending can change as a result of different intervention strategies. To get started, click on the <b>Explanation</b> and <b>Instructions</b> links above to learn more. Or, jump ahead and select <b>Start Simulator</b> to work with existing case examples. </p></h5>
+</div>
+    <div class="footer2">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
+{% endblock %}

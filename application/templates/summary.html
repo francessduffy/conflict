@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <head>
+        <title>Summary</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/main.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+        function myFunc(vars) {
+        return vars
+        }
+        </script>
+  </head>
+<div class="indented">
+        <h3>Summary</h3>
+        <p></p>
+            <b>Regions:</b> &nbsp;&nbsp; {% for region in regionnames %} {{ region }} &nbsp;&nbsp; {% endfor %}<br>
+            <b>Communities:</b> &nbsp;&nbsp; {% for community in communitynames %} {{ community }} &nbsp;&nbsp;&nbsp;  {% endfor %}<br>
+            <b>Militant Groups:</b> &nbsp;&nbsp; {% for militant in militantnames %} {{ militant }} &nbsp;&nbsp;&nbsp; {% endfor %}
+    <table class="page">
+    <tr>
+        <td style="width: 300px">
+            <h4>Grievances</h4>
+            {{ table1|safe }}
+        </td>
+        <td>
+            {% if crop == True %}
+                <img src = "/static/network.png?u={{ last_updated }}" class="cropped" alt="Community Network">
+            {% else %}
+                 <img src = "/static/network.png?u={{ last_updated }}" alt="Community Network" style="width:400px;height:300px;">
+                {% endif %}
+        </td>
+        <td>
+            <h4>Affiliations</h4>
+            {{ table2|safe }}
+        </td>
+    </tr>
+</table>
+        <p></p>
+        <h3>Intervention Options</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        Provide responses to the two questions below. Spell the militant names exactly as listed in the summary above; names are case sensitive. These responses are required.
+        <img src = "/static/question.png" style="width:18px;height:18px;" class="question" data-toggle="tooltip" title="Copy the names of militant groups from the summary list above exactly as shown" data-placement="right" alt="Help">
+        <p>
+            {{ form.supported_militants.label }}
+            {{ form.supported_militants(size=32) }}
+            {% for error in form.supported_militants.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.opposed_militants.label }}
+            {{ form.opposed_militants(size=32) }}
+            {% for error in form.opposed_militants.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <br>
+        <p></p>
+        <p></p>
+        <h5>Check the box beside the intervention tool(s) that you would like to implement and complete the additional fields as required:
+        <img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Selecting only one tool will test the effects of that one intervention tool individually. Selecting multiple tools will test all of those selected as a combined intervention strategy. If you select any tools with additional fields, copy the names of militants, communities, and regions from the summary list above exactly as shown" data-placement="right" alt="Help"></h5>
+        <p>
+            {{ form.negotiate.label }}
+            {{ form.negotiate }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Removes grievances between all communities" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.negotiate2.label }}
+            {{ form.negotiate2 }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Reduces the probability of fighting between militant groups by 50%" data-placement="right" alt="Help">&nbsp;
+            <div class="inner">
+            <div class="unbold">
+            {{ form.mil1.label }}</div>
+                {{ form.mil1(size=16) }}
+            <div class="unbold">
+            &nbsp;&nbsp;&nbsp;&nbsp;{{ form.mil2.label }}</div>
+                {{ form.mil2(size=16) }}</div>
+        </p>
+        <p>
+            {{ form.infocampaign.label }}
+            {{ form.infocampaign }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Removes community affiliations with opposed militant groups" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.supportmilgov.label }}
+            {{ form.supportmilgov }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Increases the probability that supported militants benefit their civilians by 50%" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.civwealth.label }}
+            {{ form.civwealth }}&nbsp;&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Raises the wealth of all low income (L) civilians to medium income (M)" data-placement="right" alt="Help">&nbsp;
+            <div class="inner">
+            <div class="unbold">
+            {{ form.wealthregions.label }}</div>
+            {{ form.wealthregions(size=32) }}
+            <div class="unbold">
+            &nbsp;&nbsp;&nbsp;&nbsp;{{ form.wealthcomms.label }}</div>
+            {{ form.wealthcomms(size=32) }}</div>
+        </p>
+        <p>
+            {{ form.commbenefits.label }}
+            {{ form.commbenefits }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Removes the affiliations of all communities from opposed militant groups" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.milbenefits.label }}
+            {{ form.milbenefits }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Adds affiliations between all communities and supported militant groups" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.civbenefits.label }}
+            {{ form.civbenefits }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Reduces the probability of civilians supporting opposed militant groups by 50%" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.fundmil.label }}
+            {{ form.fundmil }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Provides supported militant groups with additional external income" data-placement="right" alt="Help">&nbsp;
+            <div class="inner">
+            <div class="unbold">{{ form.fundmilamt.label }}</div>
+            {{ form.fundmilamt(size=8) }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Reasonable values range from 0 to 3000. Default value: 1500" data-placement="right" alt="Help">
+            {% for error in form.fundmilamt.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </div>
+        </p>
+        <p>
+            {{ form.cutoff.label }}
+            {{ form.cutoff }}&nbsp;&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Subtracts external income from opposed militant groups" data-placement="right" alt="Help">&nbsp;
+            <div class="inner">
+            <div class="unbold">
+            {{ form.cutoffamt.label }}</div>
+                {{ form.cutoffamt(size=8) }}
+            {% for error in form.cutoffamt.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </div>
+        </p>
+        <p>
+            {{ form.attack.label }}
+            {{ form.attack }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Reduces the strength of opposed militant groups by 1000" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.punish.label }}
+            {{ form.punish }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Reduces the probability of civilians choosing to support opposed militant groups by 50%" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.weapons.label }}
+            {{ form.weapons }}&nbsp;&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Removes weapons from the conflict environment, removing civilians' ability to militarize" data-placement="right" alt="Help">&nbsp;
+            <div class="inner">
+            <div class="unbold">
+            {{ form.weaponsregions.label }}</div>
+                {{ form.weaponsregions(size=32) }}</div>
+        </p>
+        <p>
+            {{ form.trainequip.label }}
+            {{ form.trainequip }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Adds additional strength (~10) to supported militant groups each time they extort civilians" data-placement="right" alt="Help">
+        </p>
+        <p>
+            {{ form.protect.label }}
+            {{ form.protect }}&nbsp;<img src = "/static/question.png" style="width:18px;height:18px;" class="question2" data-toggle="tooltip" title="Reduces the probability of punishment of civilians by opposed militant groups by 50%" data-placement="right" alt="Help">
+        </p>
+        <p>In order to being your simulation, click the button below. There will be a delay while the simulator runs and prepares your results that will last for about one minute. Please do not press the back button or click away from the browser window.</p>
+        <p><input type=submit class='btn btn-primary btn-lg' value="Initiate the Simulator"></p><br>
+    </form>
+</div>
+    <div class="footer">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright Frances Duffy, (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>), created on 1/1/2019, last updated 9/3/2019
+    </div>
+{% endblock %}
