@@ -405,8 +405,11 @@ def summary():
 
 @application.route('/results2')
 def results2():
-    from application.run_simulator_nonredis import simulator2
-    data = simulator2()
+    try:
+        from application.run_simulator_nonredis import simulator2
+        data = simulator2()
+    except:
+        return redirect(url_for('error'))
     data.to_csv('test.csv', index=False)
     regionnames = session.get('regionnames', None)
     communitynames = session.get('communitynames', None)
@@ -431,7 +434,10 @@ def results2():
     fightingpre = summary_data[5]
     fightingpost = summary_data[6]
     defendingchange = summary_data[7]
-    graphing(df, strength_labels, fighting_labels, defending_labels)
+    try:
+        graphing(df, strength_labels, fighting_labels, defending_labels)
+    except:
+        return redirect(url_for('error'))
     return render_template('results2.html', last_updated=dir_last_updated('/opt/python/current/app/application/static'), table1=ranked_by_strength_df.to_html(classes='rankedstrength'), table2=fighting_df.to_html(classes='fighting'), table3=defending_df.to_html(classes='defending'), strongestmname = strongest_militant_name, strongestm = strongest_militant_strength, fightingave = fighting_average_change, defendingtot = defending_total_change, fightingchange = fightingchange, fightingpre = fightingpre, fightingpost = fightingpost, defendingchange = defendingchange)
 
 @application.route('/progress')
