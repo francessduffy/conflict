@@ -388,7 +388,6 @@ def summary():
     except ValueError:
         return redirect(url_for('error'))
     if form.validate_on_submit():
-        print('button has been pushed')
         form4 = DataFrame({'supported_militants': form.supported_militants.data, 'opposed_militants': form.opposed_militants.data, 'negotiate': form.negotiate.data, 'negotiate2': form.negotiate2.data, 'mil1': form.mil1.data, 'mil2': form.mil2.data, 'infocampaign': form.infocampaign.data, 'supportmilgov': form.supportmilgov.data, 'civwealth': form.civwealth.data, 'wealthregions': form.wealthregions.data, 'wealthcomms': form.wealthcomms.data, 'commbenefits': form.commbenefits.data, 'milbenefits': form.milbenefits.data, 'civbenefits': form.civbenefits.data, 'fundmil': form.fundmil.data, 'fundmilamt': form.fundmilamt.data, 'cutoff': form.cutoff.data, 'cutoffamt': form.cutoffamt.data, 'attack': form.attack.data, 'punish': form.punish.data, 'weapons': form.weapons.data, 'weaponsregions': form.weaponsregions.data, 'trainequip': form.trainequip.data, 'protect': form.protect.data}, index=[0])
         form4.to_csv('application/static/form4.csv')
         return redirect(url_for('results2'))
@@ -406,7 +405,9 @@ def summary():
 @application.route('/results2')
 def results2():
     try:
-        from application.run_simulator_nonredis import simulator2
+        from application.model.reset_variables import reset_variables
+        from application.run_simulator_nonredis2 import simulator2
+        reset_variables()
         data = simulator2()
     except:
         return redirect(url_for('error'))

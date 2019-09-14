@@ -4,6 +4,8 @@ import copy
 from application.model.militantdata import militantdata
 from application.model.dfdata import dfdata
 from application.model.main import rounds
+#only testing:
+from application.model.results2 import data
 
 blanks = []
 i = 0
@@ -499,10 +501,15 @@ allfourteenandfifteen = []
 simulations = 1
 s = 0
 while s < simulations:
-    p = subprocess.Popen(['python', '/opt/python/current/app/application/model/results2.py'],  stdout=subprocess.PIPE,  stderr=subprocess.PIPE)
-    data = p.communicate()
-    stringdata = ''.join(map(str,  data))
+    # UNCOMMENT FOR DEPLOYMENT
+    # p = subprocess.Popen(['python', '/opt/python/current/app/application/model/results2.py'],  stdout=subprocess.PIPE,  stderr=subprocess.PIPE)
+    # data = p.communicate()
+    ### p = subprocess.Popen(['python', 'model/results2.py'],  stdout=subprocess.PIPE,  stderr=subprocess.PIPE)
+    ### data = p.communicate()
+    # stringdata = ''.join(map(str,  data))
+    stringdata = data
     parsed = stringdata.rsplit(sep='@')
+    print('parsed:', parsed)
     militantstrings = parsed[0].rsplit(sep=' * ')
     communitystrings = parsed[1].rsplit(sep=' * ')
     communitystrings2 = parsed[2].rsplit(sep=' * ')

@@ -3,6 +3,7 @@ from application.model.initconditions import civilianlist, regionlist, community
     rounds, varnegotiate, varnegotiatemil, varinfocampaign, varbenefitintervention, wealthregions,\
     wealthcommunities, varopponents, varfundmilitants, varcuttingoff, varattacking, weaponsregions, vartrainbump, interventionlist,\
     varleaderbenefits, varmilitantbenefits
+
 from application.model.defend import checkDefend
 from application.model.community import getCommunity
 from application.model.support import getCivsupport, updateCommunitySupport, checkOppSupport, whichOpponent, checkIntimidated
@@ -13,13 +14,10 @@ from application.model.fight import fight
 from application.model.intervention import negotiate, infocampaign, supportgovernance, increasewealth, leaderbenefits, militantbenefits, \
 conditionalbenefits, fundmilitants, cuttingoff, attackmilitants, attacksupporters, weaponsremoval, \
     trainassist, protection, negotiatemilitants
-
 # Array for graphing support distribution
 communitysupportgraph = []
 
 r = 0
-
-
 while r < rounds:
     negotiatemil = [['None', 'None', 0]]
     erodesupport = [['None'], 0]
@@ -60,7 +58,6 @@ while r < rounds:
             trainbump = trainassist(vartrainbump) #no effectiveness change
         if interventionlist[14] == True:
             extprotect = protection(varopponents) #no effectiveness change
-
 
     for m in militantlist:
         # Reset militant attributes at the beginning of each round
@@ -192,4 +189,3 @@ while r < rounds:
 
     # Next round
     r += 1
-

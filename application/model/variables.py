@@ -32,7 +32,6 @@ class MilitantOutput(object):
 
 
 class EnvOutput(object):
-
     def __init__(self):
         self.fightlist = []
         self.defendlist = []

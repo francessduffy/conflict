@@ -273,13 +273,12 @@ def get_parameters():
 
     return wealthValues, extortionrate, civsupportrate, terrorfactor, regionvalues, militantvalues, wealths, affiliations, grievances, communitynames, regionnames, militantnames, boxlist, boxmlist
 
-
 def intervention_values(grievances, affiliations, militantlist):
     try:
         form4 = pd.read_csv('/opt/python/current/app/application/static/form4.csv')
     except FileNotFoundError:
         form4 = pd.read_csv('http://interventionsimulator.us-east-1.elasticbeanstalk.com/static/form4.csv')
-        # form4 = pd.read_csv('/Users/Frances/python/conflict/application/static/form4.csv')
+    # form4 = pd.read_csv('/Users/Frances/python/conflict/application/static/form4.csv')
     supported_militants = str(form4.at[0,'supported_militants'])
     opposed_militants = str(form4.at[0, 'opposed_militants'])
     negotiating_militants = [form4.at[0, 'mil1'], form4.at[0, 'mil2']]

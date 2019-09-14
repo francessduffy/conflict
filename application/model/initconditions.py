@@ -1,3 +1,7 @@
+regionlist = None
+communitylist = None
+civilianlist = None
+militantlist = None
 from application.model.civilian import generateCivilians
 from application.model.region import generateRegions, generateRegions2
 from application.model.community import generateCommunities, generateCommunities2, addPropensities, totalcommunity
@@ -21,14 +25,6 @@ affiliations = parameters[7]
 grievances = parameters[8]
 communityvalues = parameters[9]
 
-
-# wealths = [[[20, 168, 12], [70, 28, 2], [14, 5, 1], [56, 23, 1], [15, 126, 9]]]
-# grievances = [[0, 0, 0, 0, -1], [-1, 0, 0, 0, 0], [-1, 0, 0, -1, -1], [0, 0, 0, 0, -1], [-1, 0, 0, 0, 0]]
-# affiliations = [[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0]]
-# wealthValues = [20, 100, 500]
-# extortionrate = .1
-# civsupportrate = .1
-# terrorfactor = .9
 
 # Number of rounds by which steady state is reached (for intervention)
 rounds = 234
@@ -86,6 +82,7 @@ militantoutputlist = generateOutputList(militantlist)
 
 # Generating matrix of fighting activity from fight.py
 envoutput = EnvOutput()
+
 
 # Generating intervention values
 interventionvalues = intervention_values(grievances, affiliations, militantlist)

@@ -504,6 +504,7 @@ while s < simulations:
     data = p.communicate()
     stringdata = ''.join(map(str,  data))
     parsed = stringdata.rsplit(sep='@')
+    print('parsed:', parsed)
     militantstrings = parsed[0].rsplit(sep=' * ')
     communitystrings = parsed[1].rsplit(sep=' * ')
     communitystrings2 = parsed[2].rsplit(sep=' * ')

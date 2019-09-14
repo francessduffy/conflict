@@ -1,5 +1,7 @@
 from application.model.main import envoutput, militantlist, militantoutputlist, rounds
 from application.model.initconditions import communitylist, percentage
+import application.model.initconditions
+
 
 # Making x values
 x = []
@@ -3131,7 +3133,10 @@ def printing():
 
     return datastring
 
-def fetchoutput():
+def fetchoutput(sims):
+    if sims > 0:
+        from application.model.reset_variables import reset_variables
+        reset_variables()
     militantmatrix = []
     for m in militantlist:
         militantmatrix.append([militantoutputlist[m.index].strength, militantoutputlist[m.index].notorietyratio,
